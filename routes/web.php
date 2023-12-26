@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ContactController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,4 +19,7 @@ use Illuminate\Support\Facades\Route;
 // });
 Route::get('/', function () {
     return view('frontend.home');
+});
+Route::prefix('/')->group(function () {
+    route::get('contact-us',[ContactController::class,'index'])->name('contact.index');
 });

@@ -5,7 +5,7 @@
                 <div class="col-lg-6 col-md-6">
                     <div class="header__top__left">
                         <ul>
-                            <li><i class="fa fa-envelope"></i>hello@ministore.com</li>
+                            <li><i class="fa fa-envelope"></i>info@ministore.com.bd</li>
                             <li>Free Shipping for all Order of $99</li>
                         </ul>
                     </div>
@@ -40,13 +40,14 @@
         <div class="row">
             <div class="col-lg-3">
                 <div class="header__logo">
-                    <a href="./index.html"><img src="{{ asset('assets/ui/frontend/img/logo.png') }}" alt=""></a>
+                    <a href="{{ url('/') }}"><img
+                            src="{{ asset('assets/ui/frontend/img/ministore-3.png') }}" alt=""></a>
                 </div>
             </div>
             <div class="col-lg-6">
                 <nav class="header__menu">
                     <ul>
-                        <li class="active"><a href="./index.html">Home</a></li>
+                        <li class="active"><a href="{{ url('/') }}">Home</a></li>
                         <li><a href="./shop-grid.html">Shop</a></li>
                         <li><a href="#">Pages</a>
                             <ul class="header__menu__dropdown">
@@ -57,7 +58,7 @@
                             </ul>
                         </li>
                         <li><a href="./blog.html">Blog</a></li>
-                        <li><a href="./contact.html">Contact</a></li>
+                        <li><a href="{{ route('contact.index') }}">Contact</a></li>
                     </ul>
                 </nav>
             </div>

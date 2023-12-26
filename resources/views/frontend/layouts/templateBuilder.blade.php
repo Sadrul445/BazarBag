@@ -7,7 +7,7 @@
     <meta name="keywords" content="Ogani, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>@yield('title','Home | MINISTORE.')</title>
+    <title>@yield('title')</title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
@@ -41,9 +41,11 @@
     @includeIf('frontend.layouts.partials.hero')
 
     <!-- Hero Section End -->
+    <div class="container">
+        @yield('content')
+    </div>
 
-
-    <!-- Categories Section Begin -->
+    {{-- <!-- Categories Section Begin -->
 
     @includeIf('frontend.layouts.partials.categories')
 
@@ -75,7 +77,7 @@
 
     @includeIf('frontend.layouts.partials.blog')
 
-    <!-- Blog Section End -->
+    <!-- Blog Section End --> --}}
 
 
     <!-- Footer Section Begin -->
