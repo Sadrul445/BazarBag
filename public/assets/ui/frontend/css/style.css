@@ -88,7 +88,9 @@ button:focus,
 textarea:focus {
 	outline: none;
 }
-
+a{
+	text-decoration: none;
+}
 a:hover,
 a:focus {
 	text-decoration: none;
@@ -186,7 +188,7 @@ ol {
 	top: 0;
 	left: 0;
 	z-index: 999999;
-	background: #000;
+	background: #ffffffc8;
 }
 
 .loader {
@@ -198,8 +200,8 @@ ol {
 	margin-top: -13px;
 	margin-left: -13px;
 	border-radius: 60px;
-	animation: loader 0.8s linear infinite;
-	-webkit-animation: loader 0.8s linear infinite;
+	animation: loader 0.5s linear infinite;
+	-webkit-animation: loader 0.5s linear infinite;
 }
 
 @keyframes loader {
@@ -212,13 +214,13 @@ ol {
 	50% {
 		-webkit-transform: rotate(180deg);
 		transform: rotate(180deg);
-		border: 4px solid #673ab7;
+		border: 4px solid #7fad39;
 		border-left-color: transparent;
 	}
 	100% {
 		-webkit-transform: rotate(360deg);
 		transform: rotate(360deg);
-		border: 4px solid #f44336;
+		border: 4px solid #3c36f4;
 		border-left-color: transparent;
 	}
 }
@@ -231,7 +233,7 @@ ol {
 	}
 	50% {
 		-webkit-transform: rotate(180deg);
-		border: 4px solid #673ab7;
+		border: 4px solid #7fad39;
 		border-left-color: transparent;
 	}
 	100% {
@@ -246,7 +248,7 @@ ol {
 -----------------------*/
 
 .header__top {
-	background: #f5f5f5;
+	background: #7ead3969;
 }
 
 .header__top__left {

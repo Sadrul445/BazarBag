@@ -7,6 +7,6 @@ use Illuminate\Http\Request;
 class ShopController extends Controller
 {
     public function shop_grid_index(){
-        return view('frontend.layouts.shop.shop-grid');
+        return view('layouts.frontend.shop.shop-grid');
     }
 }
