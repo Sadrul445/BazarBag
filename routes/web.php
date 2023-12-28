@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\ShopController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,4 +23,7 @@ Route::get('/', function () {
 });
 Route::prefix('/')->group(function () {
     route::get('contact-us',[ContactController::class,'index'])->name('contact.index');
+});
+Route::prefix('/shop')->group(function (){
+    route::get('/shop-grid',[ShopController::class,'shop_grid_index'])->name('shopGrid.index');
 });
