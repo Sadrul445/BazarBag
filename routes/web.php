@@ -22,6 +22,8 @@ Route::prefix('/')->group(function () {
 });
 Route::prefix('/')->group(function () {
     route::get('shop',[ShopController::class,'shop_grid_index'])->name('shopGrid.index');
+    route::get('shop-details',[ShopController::class,'shop_details'])->name('shop.details');
+    
 });
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
