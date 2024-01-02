@@ -88,8 +88,14 @@
     });
 
 
-    $('.hero__categories__all').on('click', function(){
-        $('.hero__categories ul').slideToggle(400);
+    $(document).ready(function() {
+        // Hide the categories on page load
+        $('.hero__categories ul').hide();
+    
+        // Toggle the categories when the "All departments" button is clicked
+        $('.hero__categories__all').on('click', function() {
+            $('.hero__categories ul').slideToggle(400);
+        });
     });
 
     /*--------------------------

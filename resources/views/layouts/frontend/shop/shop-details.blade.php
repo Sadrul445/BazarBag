@@ -2,7 +2,7 @@
 
 @includeIf('layouts.frontend.partials.css')
 
-@section('title', 'shop-details | MINISTORE.')
+@section('title', 'Shop Details | MINISTORE.')
 @section('content')
 
     <!-- Breadcrumb Section Begin -->
@@ -13,7 +13,7 @@
                     <div class="breadcrumb__text">
                         <h2>Vegetable’s Package</h2>
                         <div class="breadcrumb__option">
-                            <a href="./index.html">Home</a>
+                            <a href="{{ url('/') }}">Home</a>
                             <a href="./index.html">Vegetables</a>
                             <span>Vegetable’s Package</span>
                         </div>
