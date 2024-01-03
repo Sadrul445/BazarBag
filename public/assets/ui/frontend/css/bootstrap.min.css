@@ -334,7 +334,7 @@ tr {
 }
 
 label {
-    display: inline-block
+    display: inline-block;
 }
 
 button {
@@ -4867,11 +4867,13 @@ fieldset:disabled .btn {
     flex-direction: column;
     min-width: 0;
     word-wrap: break-word;
-    background-color: #fff;
+    /* background-color: #fff; */
+    background: rgb(202,221,173);
+    background: linear-gradient(300deg, rgba(202,221,173,1) 0%, rgba(252,252,252,1) 50%, rgba(255,255,255,1) 64%, rgb(255, 255, 255) 100%);
     background-clip: border-box;
-    border: 1px solid #ffffff;
-    border-radius: .25rem;
-    box-shadow: 0px 0px 10px 1px rgba(192, 192, 192, 0.449);
+    /* border: 1px solid #ffffff; */
+    border-radius: 1.25rem;
+    box-shadow: 0px 0px 10px 5px rgba(192, 192, 192, 0.449);
 }
 
 .card>hr {
