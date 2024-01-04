@@ -28,11 +28,11 @@
     <nav class="humberger__menu__nav mobile-menu">
         <ul>
             <li class="active"><a href="{{ url('/') }}">Home</a></li>
-            <li><a href="{{ route('shopGrid.index') }}">Shop</a></li>
+            <li><a href="{{ route('shop.index') }}">Shop</a></li>
             <li><a href="#">Pages</a>
                 <ul class="header__menu__dropdown">
-                    <li><a href="./shop-details.html">Shop Details</a></li>
-                    <li><a href="./shoping-cart.html">Shoping Cart</a></li>
+                    <li><a href="#">Shop Details</a></li>
+                    <li><a href="#">Shoping Cart</a></li>
                     <li><a href="./checkout.html">Check Out</a></li>
                     <li><a href="./blog-details.html">Blog Details</a></li>
                 </ul>

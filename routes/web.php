@@ -25,17 +25,20 @@ Route::prefix('/')->group(function(){
     route::get('blog',[BlogController::class,'index'])->name('blog.index');
 });
 Route::prefix('/')->group(function(){
-    route::get('product',[ProductController::class,'index'])->name('product.index');
+    route::get('product',[ProductController::class,'index']);
 });
 Route::prefix('/')->group(function () {
     route::get('contact-us',[ContactController::class,'index'])->name('contact.index');
 });
 Route::prefix('/')->group(function () {
-    route::get('shop',[ShopController::class,'shop_grid_index'])->name('shopGrid.index');
-    route::get('shop-details',[ShopController::class,'shop_details'])->name('shop.details');
+    route::get('shop',[ShopController::class,'shops'])->name('shop.index');
+    route::get('shop-details/{id}',[ShopController::class,'shop_details'])->name('shop.details');
+    // route::get('shop/product/{id}',[ShopController::class,'single_product'])->name('product.id');
+    route::get('cart/{id}',[ShopController::class,'addToCart'])->name('add_to_cart');
 });
 Route::prefix('/')->group(function(){
     route::get('cart',[CartController::class,'index'])->name('cart.index');
+    
 });
 Route::prefix('/')->group(function(){
     route::get('checkout',[CheckController::class,'index'])->name('checkout.index');

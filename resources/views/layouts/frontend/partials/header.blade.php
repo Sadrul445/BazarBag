@@ -48,11 +48,11 @@
                 <nav class="header__menu">
                     <ul>
                         <li class="active"><a href="{{ url('/') }}">Home</a></li>
-                        <li><a href="{{ route('shopGrid.index') }}">Shop</a></li>
+                        <li><a href="{{ route('shop.index') }}">Shop</a></li>
                         <li><a href="#">Pages</a>
                             <ul class="header__menu__dropdown">
-                                <li><a href="{{ route('shop.details') }}">Shop Details</a></li>
-                                <li><a href="{{ route('cart.index') }}">Shoping Cart</a></li>
+                                <li><a href="#">Shop Details</a></li>
+                                <li><a href="{{-- {{ route('cart.index') }} --}}">Shoping Cart</a></li>
                                 <li><a href="{{ route('checkout.index') }}">Check Out</a></li>
                                 <li><a href="./blog-details.html">Blog Details</a></li>
                             </ul>
