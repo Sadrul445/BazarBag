@@ -21,6 +21,26 @@ class ShopController extends Controller
         return view('layouts.frontend.shop.shop-grid',compact('shopProducts'));
     }
     public function addToCart(Request $request, $id){
+        
+        $product = Shop::findOrFail($id);
+
+        $cart = session()->get('cart',[]);
+        
+        if(isset($cart[$id])){
+            $cart[$id]['quantity']++;
+        }
+        else{
+            $cart[$id]=[
+                'product_name' => $product->product_name,
+                'product_description' => $product->product_description,
+                'image' => $product->image,
+                'other_image' => $product->other_image,
+                'price' => $product->price,
+                'quantity' => $product->quantity
+            ];
+        }
+
+        session()->put('cart',$cart);
         return redirect()->back()->with('success','Product add to cart successfully');
     }
 }

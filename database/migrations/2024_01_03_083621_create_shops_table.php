@@ -16,7 +16,9 @@ return new class extends Migration
             $table->string('product_name');
             $table->text('product_description');
             $table->string('image');
-            $table->integer('price');
+            $table->string('other_images')->nullable();
+            $table->unsignedBigInteger('price');
+            $table->unsignedBigInteger('quantity')->nullable();
             $table->timestamps();
         });
     }
