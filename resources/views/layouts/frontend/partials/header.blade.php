@@ -19,7 +19,7 @@
                             <a href="#"><i class="fa fa-pinterest-p"></i></a>
                         </div>
                         <div class="header__top__right__language">
-                            <img src="img/language.png" alt="">
+                            <img src="{{ asset('assets/ui/frontend/img/language.png') }}" alt="">
                             <div>English</div>
                             <span class="arrow_carrot-down"></span>
                             <ul>
@@ -68,7 +68,7 @@
                         <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
                         <li><!-- Vertically centered modal -->
                             <a href="#" data-bs-toggle="modal" data-bs-target="#cartModal">
-                                <i class="fa fa-shopping-bag"></i> <span class="bg-danger"> {{ count((array) session('cart')) }}</span>
+                                <i class="fa fa-shopping-bag"></i> <span class="bg-danger">{{ count((array) session('cart')) }}</span>
                             </a>
 
                             <!-- Cart Modal -->
@@ -84,44 +84,52 @@
                                         <div class="modal-body">
                                             <!-- Cart content goes here -->
                                             <div class="cart-item">
-                                                @if(session('cart'))
-                                                
+
+                                                {{-- @if(session('cart') && count(session('cart')) > 0) --}}
+                                                @if(session('cart') && is_array(session('cart')) && count(session('cart')) > 0)
                                                 @foreach (session('cart') as $id => $details)    
-                                                <div class="row">
-                                                    <div class="col-sm-3"> <img
-                                                            src="{{ $details['image'] }}"
-                                                            alt="Product 1" class="cart-item-image"></div>
-                                                    <div class="col-sm-9">
-                                                        <a href="{{ route('shop.details',['id'=>$id]) }}">
-                                                            <h5>{{  $details['product_name']  }}</h5>
-                                                            <p>Price: ৳ {{  $details['price'] }}</p>
-                                                        </a>
-                                                        <p class="count">Quantity:{{ $details['quantity'] }}</p>
+                                                        <div class="row">
+                                                            <div class="col-sm-3">
+                                                                <img src="{{ $details['image'] }}" alt="Product 1" class="cart-item-image">
+                                                            </div>
+                                                            <div class="col-sm-9">
+                                                                <a href="{{ route('shop.details',['id'=>$id]) }}">
+                                                                    <h5>{{ $details['product_name'] }}</h5>
+                                                                    <p>Price: ৳ {{ $details['price'] }}</p>
+                                                                </a>
+                                                                <p class="count">Quantity:{{ $details['quantity'] }}</p>
+                                                            </div>
+                                                        </div>
+                                                    @endforeach
+                                                    <hr>
+                                                    <div class="cart-item">
+                                                        <div class="row">
+                                                            <div class="col-sm-3">Sub Total:</div>
+                                                            <div class="col-sm-4"></div>
+                                                            @php $total = 0 @endphp
+                                                            @foreach ((array) session('cart') as $id => $details)
+                                                                @php
+                                                                    $total += $details['price'] * $details['quantity'];
+                                                                @endphp
+                                                            @endforeach
+                                                            <div class="col-sm-5">৳ {{ $total }}</div>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                @endforeach
+                                                @else
+                                                    <p class="text-center">Your Cart is Empty</p>
+                                                    @php $total = 0 @endphp <!-- Initialize $total for an empty cart -->
                                                 @endif
                                             </div>
-                                            <hr>
-
-                                            <div class="cart-item">
-                                               <div class="row">
-                                                <div class="col-sm-3">Sub Total:</div>
-                                                <div class="col-sm-4"></div>
-                                                @php $total = 0 @endphp
-                                                @foreach ((array) session('cart') as $id => $details )
-                                                    @php
-                                                        $total += $details['price'] * $details['quantity']
-                                                    @endphp
-                                                @endforeach
-                                                <div class="col-sm-5">৳ {{ $total }}</div>
-                                               </div>
-                                            </div>
                                         </div>
+                                        
+                                        <div class="text-center">Product item: <span>৳ {{ $total }}</span></div>
+                                        
+                                        
+
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary"
                                                 data-bs-dismiss="modal">Close</button>
-                                            <button type="button" class="btn btn-primary">Checkout</button>
+                                                <a class="btn btn-success" type="submit" href="{{ route('cart.index') }}">View Cart</a>
                                         </div>
                                     </div>
                                 </div>

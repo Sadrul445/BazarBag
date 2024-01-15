@@ -38,6 +38,8 @@ Route::prefix('/')->group(function () {
 });
 Route::prefix('/')->group(function(){
     route::get('cart',[CartController::class,'index'])->name('cart.index');
+    route::patch('/update-cart',[CartController::class,'updateItem'])->name('update_from_cart');
+    route::delete('/remove-item',[CartController::class,'removeItem'])->name('remove_from_cart');
     
 });
 Route::prefix('/')->group(function(){

@@ -10,7 +10,7 @@
     <title>@yield('title')</title>
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
-
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('assets/ui/frontend/img/logo/favicon.ico') }}">
     <!-- Css Styles -->
     @includeIf('layouts.frontend.partials.css')
 </head>
@@ -39,13 +39,18 @@
     <section class="hero">
         @includeIf('layouts.frontend.partials.hero')
     </section>
-    
+
     <!-- Hero Section End -->
     <div class="container">
         @if (session('success'))
-                <div class="alert alert-success">
-                    {{ session('success') }}
-                </div>
+            <div class="alert alert-success">
+                {!! session('success') !!}
+            </div>
+        @endif
+        @if (session('error'))
+            <div class="alert alert-danger">
+                {{ session('error') }}
+            </div>
         @endif
         @yield('content')
     </div>

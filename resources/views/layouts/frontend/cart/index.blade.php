@@ -40,72 +40,47 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td class="shoping__cart__item">
-                                        <img src="img/cart/cart-1.jpg" alt="">
-                                        <h5>Vegetable’s Package</h5>
-                                    </td>
-                                    <td class="shoping__cart__price">
-                                        $55.00
-                                    </td>
-                                    <td class="shoping__cart__quantity">
-                                        <div class="quantity">
-                                            <div class="pro-qty">
-                                                <input type="text" value="1">
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="shoping__cart__total">
-                                        $110.00
-                                    </td>
-                                    <td class="shoping__cart__item__close">
-                                        <span class="icon_close"></span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="shoping__cart__item">
-                                        <img src="img/cart/cart-2.jpg" alt="">
-                                        <h5>Fresh Garden Vegetable</h5>
-                                    </td>
-                                    <td class="shoping__cart__price">
-                                        $39.00
-                                    </td>
-                                    <td class="shoping__cart__quantity">
-                                        <div class="quantity">
-                                            <div class="pro-qty">
-                                                <input type="text" value="1">
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="shoping__cart__total">
-                                        $39.99
-                                    </td>
-                                    <td class="shoping__cart__item__close">
-                                        <span class="icon_close"></span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="shoping__cart__item">
-                                        <img src="img/cart/cart-3.jpg" alt="">
-                                        <h5>Organic Bananas</h5>
-                                    </td>
-                                    <td class="shoping__cart__price">
-                                        $69.00
-                                    </td>
-                                    <td class="shoping__cart__quantity">
-                                        <div class="quantity">
-                                            <div class="pro-qty">
-                                                <input type="text" value="1">
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="shoping__cart__total">
-                                        $69.99
-                                    </td>
-                                    <td class="shoping__cart__item__close">
-                                        <span class="icon_close"></span>
-                                    </td>
-                                </tr>
+                                @php
+                                    $total = 0;
+                                @endphp
+                                @php
+                                    $cart = session('cart');
+                                @endphp
+                                @if (is_array($cart))
+                                    @foreach ($cart as $id => $details)
+                                        @php
+                                            $total += $details['price'] * $details['quantity'];
+                                        @endphp
+                                        <tr data-id="{{ $id }}">
+                                            <td class="shoping__cart__item">
+                                                <img src="{{ $details['image'] }}" alt="">
+                                                <p>{{ $details['product_name'] }}</p>
+                                            </td>
+                                            <td class="shoping__cart__price" data-th="price">
+                                                ৳ {{ $details['price'] }}
+                                            </td>
+                                            <td class="shoping__cart__quantity" data-th="quantity">
+                                                <div class="quantity">
+                                                    <div class="pro-qty">
+                                                        <input class="cart__update" type="number"
+                                                            value="{{ $details['quantity'] }}">
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="shoping__cart__total">
+                                                ৳ {{ $details['price'] * $details['quantity'] }}
+                                            </td>
+                                            <td class="shoping__cart__item__close" data-th="">
+                                                <span class="icon_close"></span>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                @else
+                                    {{-- Handle the case when 'cart' is not an array --}}
+                                    <tr>
+                                        <td colspan="5">Cart is empty.</td>
+                                    </tr>
+                                @endif
                             </tbody>
                         </table>
                     </div>
@@ -114,8 +89,9 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="shoping__cart__btns">
-                        <a href="#" class="primary-btn cart-btn">CONTINUE SHOPPING</a>
-                        <a href="#" class="primary-btn cart-btn cart-btn-right"><span class="icon_loading"></span>
+                        <a href="{{ route('shop.index') }}" class="primary-btn cart-btn">CONTINUE SHOPPING</a>
+                        <a href="{{ route('cart.index') }}" class="primary-btn cart-btn cart-btn-right"><span
+                                class="icon_loading"></span>
                             Upadate Cart</a>
                     </div>
                 </div>
@@ -134,8 +110,8 @@
                     <div class="shoping__checkout">
                         <h5>Cart Total</h5>
                         <ul>
-                            <li>Subtotal <span>$454.98</span></li>
-                            <li>Total <span>$454.98</span></li>
+                            <li>Subtotal <span>৳ {{ $total }}</span></li>
+                            <li>Total <span>৳ {{ $total }}</span></li>
                         </ul>
                         <a href="{{ route('checkout.index') }}" class="primary-btn">PROCEED TO CHECKOUT</a>
                     </div>
@@ -145,3 +121,51 @@
     </section>
     <!-- Shoping Cart Section End -->
 @endsection
+@push('scripts')
+    <script>
+        $(".shoping__cart__quantity .cart__update").change(function(e) {
+            e.preventDefault()
+            var element = $(this);
+
+            $.ajax({
+                url: '{{ route('update_from_cart') }}',
+                method: "PATCH",
+                data: {
+                    _token: '{{ csrf_token() }}',
+                    id: element.parents("tr").attr("data-id"),
+                    quantity: element.parents("tr").find(".cart__update").val()
+                },
+                success: function(response) {
+                    window.location.reload();
+                }
+            });
+        });
+
+        $(".icon_close").click(function(e) {
+            e.preventDefault();
+
+            var element = $(this);
+
+            $.ajax({
+                url: '{{ route('remove_from_cart') }}',
+                method: 'DELETE',
+                data: {
+                    _token: '{{ csrf_token() }}',
+                    id: element.parents("tr").attr("data-id")
+                },
+                success: function(response) {
+                    if (response.success) {
+                        // Individual item removed successfully
+                        // alert(response.message); // You can customize this part based on your needs
+                        window.location.reload();
+                    } else {
+                        alert(response.message); // Show an error message to the user
+                    }
+                },
+                error: function() {
+                    alert('An error occurred'); // Handle AJAX error
+                }
+            });
+        });
+    </script>
+@endpush
