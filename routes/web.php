@@ -7,6 +7,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ShopController;
+use App\Http\Controllers\StripeController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -45,6 +46,9 @@ Route::prefix('/')->group(function(){
 Route::prefix('/')->group(function(){
     route::get('checkout',[CheckController::class,'index'])->name('checkout.index');
 });
+Route::post('/session',[StripeController::class,'stripeSession'])->name('stripSession');
+Route::get('/success',[StripeController::class,'success'])->name('success');
+Route::get('/cancel',[StripeController::class,'cancel'])->name('cancel');
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
