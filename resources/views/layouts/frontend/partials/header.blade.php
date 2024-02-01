@@ -5,7 +5,7 @@
                 <div class="col-lg-6 col-md-6">
                     <div class="header__top__left">
                         <ul>
-                            <li><i class="fa fa-envelope"></i>info@ministore.com.bd</li>
+                            <li><i class="fa fa-envelope"></i>info.bazarbag@gmail.com</li>
                             <li>Free Shipping for all Order of $99</li>
                         </ul>
                     </div>
@@ -27,9 +27,19 @@
                                 <li><a href="#">English</a></li>
                                 <li><a href="#">Bangla</a></li>
                             </ul>
-                        </div>
-                        <div class="header__top__right__auth">
-                            <a href="{{ route('login') }}"><i class="fa fa-user"></i> Login</a>
+                        </div>                 
+                        <div class="header__top__right__auth ">
+                            @if (Route::has('login'))
+                                @auth
+                                    <a class="username" href="#"> <strong> {{ auth()->user()->name }}</strong><span class="arrow_carrot-down"></span></a> 
+                                    <ul>
+                                        <li><a href="{{ route('dashboard') }}">Profile</a></li>
+                                        <li><a href="{{ route('logout') }}">Logout</a></li>
+                                    </ul>
+                                @else
+                                    <a href="{{ route('login') }}"><i class="fa fa-user"></i> Login</a>
+                                @endauth
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -40,11 +50,11 @@
         <div class="row">
             <div class="col-lg-3">
                 <div class="header__logo">
-                    <a href="{{ url('/') }}"><img src="{{ asset('assets/ui/frontend/img/ministore-3.png') }}"
+                    <a href="{{ url('/') }}"><img src="{{ asset('assets/ui/frontend/img/light-logo.svg') }}"
                             alt=""></a>
                 </div>
             </div>
-            <div class="col-lg-6">
+            <div class="col-lg-6 mt-3">
                 <nav class="header__menu">
                     <ul>
                         <li class="active"><a href="{{ url('/') }}">Home</a></li>
@@ -62,13 +72,14 @@
                     </ul>
                 </nav>
             </div>
-            <div class="col-lg-3">
+            <div class="col-lg-3 mt-2">
                 <div class="header__cart">
                     <ul>
                         <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
                         <li><!-- Vertically centered modal -->
                             <a href="#" data-bs-toggle="modal" data-bs-target="#cartModal">
-                                <i class="fa fa-shopping-bag"></i> <span class="bg-danger">{{ count((array) session('cart')) }}</span>
+                                <i class="fa fa-shopping-bag"></i> <span
+                                    class="bg-danger">{{ count((array) session('cart')) }}</span>
                             </a>
 
                             <!-- Cart Modal -->
@@ -85,19 +96,21 @@
                                             <!-- Cart content goes here -->
                                             <div class="cart-item">
 
-                                                {{-- @if(session('cart') && count(session('cart')) > 0) --}}
-                                                @if(session('cart') && is_array(session('cart')) && count(session('cart')) > 0)
-                                                @foreach (session('cart') as $id => $details)    
+                                                {{-- @if (session('cart') && count(session('cart')) > 0) --}}
+                                                @if (session('cart') && is_array(session('cart')) && count(session('cart')) > 0)
+                                                    @foreach (session('cart') as $id => $details)
                                                         <div class="row">
                                                             <div class="col-sm-3">
-                                                                <img src="{{ $details['image'] }}" alt="Product 1" class="cart-item-image">
+                                                                <img src="{{ $details['image'] }}" alt="Product 1"
+                                                                    class="cart-item-image">
                                                             </div>
                                                             <div class="col-sm-9">
-                                                                <a href="{{ route('shop.details',['id'=>$id]) }}">
+                                                                <a href="{{ route('shop.details', ['id' => $id]) }}">
                                                                     <h5>{{ $details['product_name'] }}</h5>
                                                                     <p>Price: ৳ {{ $details['price'] }}</p>
                                                                 </a>
-                                                                <p class="count">Quantity:{{ $details['quantity'] }}</p>
+                                                                <p class="count">Quantity:{{ $details['quantity'] }}
+                                                                </p>
                                                             </div>
                                                         </div>
                                                     @endforeach
@@ -121,15 +134,16 @@
                                                 @endif
                                             </div>
                                         </div>
-                                        
+
                                         <div class="text-center">Product item: <span>৳ {{ $total }}</span></div>
-                                        
-                                        
+
+
 
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary"
                                                 data-bs-dismiss="modal">Close</button>
-                                                <a class="btn btn-success" type="submit" href="{{ route('cart.index') }}">View Cart</a>
+                                            <a class="btn btn-success" type="submit"
+                                                href="{{ route('cart.index') }}">View Cart</a>
                                         </div>
                                     </div>
                                 </div>

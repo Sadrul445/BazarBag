@@ -3,13 +3,13 @@
         <div class="col-lg-3 col-md-6 col-sm-6">
             <div class="footer__about">
                 <div class="footer__about__logo">
-                    <a href="{{ url('/') }}"><img src="{{ asset('assets/ui/frontend/img/ministore-re.png') }}"
+                    <a href="{{ url('/') }}"><img src="{{ asset('assets/ui/frontend/img/light-logo.svg') }}"
                             alt=""></a>
                 </div>
                 <ul>
                     <li>Address: 14 No Ward Lalkhan Bazar Chattogram, Bangladesh</li>
                     <li>Phone: +951515151</li>
-                    <li>Email: <a href="#">info@ministore.com.bd</a></li>
+                    <li>Email: <a href="#">info.bazarbag@gmail.com</a></li>
                 </ul>
             </div>
         </div>

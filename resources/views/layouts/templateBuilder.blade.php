@@ -4,13 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="description" content="">
-    <meta name="keywords" content="Ogani, unica, creative, html">
+    <meta name="keywords" content="BazarBag, BAZARBAG, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>@yield('title')</title>
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('assets/ui/frontend/img/logo/favicon.ico') }}">
+    <link rel="icon" type="image/svg" sizes="40X40" href="{{ asset('assets/ui/frontend/img/logo/favicon-icon-side.svg') }}">
     <!-- Css Styles -->
     @includeIf('layouts.frontend.partials.css')
 </head>

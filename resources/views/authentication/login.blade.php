@@ -10,7 +10,7 @@
                 <div class="card mt-5">
                     <div class="card-header text-center">
                         <a href="{{ url('/') }}" class="d-inline-block"><img
-                                src="{{ asset('assets/ui/frontend/img/ministore-re.png') }}" alt="" width="50%"></a>
+                                src="{{ asset('assets/ui/frontend/img/light-logo.svg') }}" alt=""></a>
                         {{-- <h2 class="my-3">Login</h2> --}}
                     </div>
                     <div class="card-body">

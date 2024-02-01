@@ -2,7 +2,7 @@
 
 @includeIf('layouts.frontend.partials.css')
 
-@section('title', 'Checkout | MINISTORE.')
+@section('title', 'Checkout | BAZARBAG')
 @section('content')
     <!-- Breadcrumb Section Begin -->
     <section class="breadcrumb-section set-bg" data-setbg="{{ asset('assets/ui/frontend/img/breadcrumb.jpg') }}">

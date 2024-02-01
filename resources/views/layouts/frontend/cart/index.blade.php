@@ -2,7 +2,7 @@
 
 @includeIf('layouts.frontend.partials.css')
 
-@section('title', 'Cart | MINISTORE.')
+@section('title', 'Cart | BAZARBAG')
 @section('content')
 
     <!-- Breadcrumb Section Begin -->

@@ -2,7 +2,7 @@
 @push('css')
 @endpush
 @includeIf('layouts.frontend.partials.css')
-@section('title', 'Contact Us | MINISTORE.')
+@section('title', 'Contact Us | BAZARBAG')
 @section('content')
     <!-- Breadcrumb Section Begin -->
     <section class="breadcrumb-section set-bg" data-setbg="{{ asset('assets/ui/frontend/img/breadcrumb.jpg') }}">
@@ -51,7 +51,7 @@
                     <div class="contact__widget">
                         <span class="icon_mail_alt"></span>
                         <h4>Email</h4>
-                        <p>info@ministore.com.bd</p>
+                        <p>info.bazarbag@gmail.com</p>
                     </div>
                 </div>
             </div>
@@ -72,7 +72,7 @@
                 <ul>
                     <li>Phone: +12-345-6789</li>
                     <li>Add: Lalkhan Bazar, Chittagong</li>
-                    <li><a href="#">info@ministore.com.bd</a></li>
+                    <li><a href="#">info.bazarbag@gmail.com</a></li>
                 </ul>
             </div>
         </div>

@@ -1,7 +1,7 @@
 <div class="humberger__menu__overlay"></div>
 <div class="humberger__menu__wrapper">
     <div class="humberger__menu__logo">
-        <a href="#"><img src="{{ asset('assets/ui/frontend/img/ministore-3.png') }}" alt=""></a>
+        <a href="#"><img src="{{ asset('assets/ui/frontend/img/light-logo.svg') }}" alt=""></a>
     </div>
     <div class="humberger__menu__cart">
         <ul>
@@ -21,8 +21,18 @@
                 <li><a href="#">Bangla</a></li>
             </ul>
         </div>
-        <div class="header__top__right__auth">
-            <a href="#"><i class="fa fa-user"></i>Login</a>
+        <div class="header__top__right__auth mx-2">
+            @if (Route::has('login'))
+            @auth
+                <a class="username" href="#"> <strong> {{ auth()->user()->name }}</strong><span class="arrow_carrot-down"></span></a> 
+                <ul>
+                    <li><a href="{{ route('profile.edit') }}">Profile</a></li>
+                    <li><a href="{{ route('logout') }}">Logout</a></li>
+                </ul>
+            @else
+                <a href="{{ route('login') }}"><i class="fa fa-user"></i> Login</a>
+            @endauth
+        @endif
         </div>
     </div>
     <nav class="humberger__menu__nav mobile-menu">
@@ -50,8 +60,8 @@
     </div>
     <div class="humberger__menu__contact">
         <ul>
-            <li><i class="fa fa-envelope"></i> info@ministore.com.bd</li>
-            <li>Free Shipping for all Order of $99</li>
+            <li><i class="fa fa-envelope"></i> info.bazarbag@gmail.com</li>
+            <li>Free Shipping for all Order of $999</li>
         </ul>
     </div>
 </div>
