@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Backend\CustomerController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckController;
@@ -15,13 +16,26 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-Route::get('/user/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
 Route::get('/', function () {
     return view('home');
 });
+
+
+// Route::get('/user/dashboard', function () {
+//     return view('layouts.backend.customer.dashboard');
+// })->middleware(['auth', 'role:customer'])->name('customer.dashboard');
+
+Route::get('/user/{name}/dashboard', [CustomerController::class, 'customerDashboard'])
+    ->middleware(['auth', 'role:customer'])
+    ->name('customer.dashboard');
+
+Route::get('/admin/dashboard', function () {
+    return view('layouts.backend.admin-dashboard.dashboard');
+})->middleware(['auth', 'role:admin'])->name('admin.dashboard');
+
+
+
+
 Route::prefix('/')->group(function(){
     route::get('blog',[BlogController::class,'index'])->name('blog.index');
 });

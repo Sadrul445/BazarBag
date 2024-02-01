@@ -23,21 +23,27 @@
                             <div>English</div>
                             <span class="arrow_carrot-down"></span>
                             <ul>
-                                <li><a href="#">Spanis</a></li>
                                 <li><a href="#">English</a></li>
                                 <li><a href="#">Bangla</a></li>
                             </ul>
                         </div>                 
-                        <div class="header__top__right__auth ">
+                        <div class="header__top__right__auth">
+
                             @if (Route::has('login'))
                                 @auth
                                     <a class="username" href="#"> <strong> {{ auth()->user()->name }}</strong><span class="arrow_carrot-down"></span></a> 
-                                    <ul>
-                                        <li><a href="{{ route('dashboard') }}">Profile</a></li>
-                                        <li><a href="{{ route('logout') }}">Logout</a></li>
+                                    <ul class="rounded">
+                                     
+                                        @if (auth()->user()->role === 'customer')
+                                            <li><a href="{{ route('customer.dashboard',['name' => auth()->user()->name]) }}">Profile</a></li>
+                                            {{-- <li><a href="{{ route('logout') }}">Logout</a></li> --}}
+                                        @else
+                                            <li><a href="{{ route('admin.dashboard') }}">Profile</a></li>
+                                            {{-- <li><a href="{{ route('logout') }}">Logout</a></li> --}}
+                                        @endif
                                     </ul>
                                 @else
-                                    <a href="{{ route('login') }}"><i class="fa fa-user"></i> Login</a>
+                                    <a class="" href="{{ route('login') }}"><i class="fa fa-user"></i>Login</a>
                                 @endauth
                             @endif
                         </div>
