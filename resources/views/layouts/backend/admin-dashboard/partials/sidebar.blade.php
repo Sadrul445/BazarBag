@@ -1,7 +1,7 @@
 <header class="main-nav">
     <div class="sidebar-user text-center">
         <a class="setting-primary" href="javascript:void(0)"><i data-feather="settings"></i></a><img
-            class="img-90 rounded-circle" src="{{-- {{ asset('assets/images/dashboard/1.png') }} --}}" alt="" />
+            class="img-90 rounded-circle" src="{{ asset('backend/assets/images/dashboard/1.png') }}" alt="" />
         <div class="badge-bottom"><span class="badge " style="color: #0DB14B;background:#ffffff">New</span></div>
         @if (Auth::check())
             <a href="#">
@@ -50,19 +50,18 @@
                         </ul>
                     </li> --}}
                     <li class="dropdown">
-                        <a class="nav-link menu-title " href="javascript:void(0)"><i class="fa-solid fa-calendar-check fa-lg"></i><span class="ms-3">Daily
-                                Attendance</span></a>
+                        <a class="nav-link menu-title " href="javascript:void(0)"><i class="fa-solid fa-calendar-check fa-lg"></i><span class="ms-3">Categories</span></a>
                         <ul class="nav-submenu menu-content" style="display: none;">
-                            <li><a href="{{-- {{ route('admin-dashboard.daily-attendances') }} --}}" class="#">Show Daily
-                                    Attendance</a></li>
+                            <li><a href="{{ route('category.create') }}" class="#">Create Categories</a></li>
+                            <li><a href="{{ route('category.index') }}" class="#">Show Category</a></li>
                             {{-- <li><a href="#" class="#">List of Employee</a></li> --}}
                         </ul>
                     </li>
                     <li class="dropdown">
-                        <a class="nav-link menu-title " href="javascript:void(0)"><i class="fa-solid fa-clipboard-user fa-lg"></i><span class="ms-3">Employee</span></a>
+                        <a class="nav-link menu-title " href="javascript:void(0)"><i class="fa-solid fa-clipboard-user fa-lg"></i><span class="ms-3">Sub Categories</span></a>
                         <ul class="nav-submenu menu-content" style="display: none;">
-                            <li><a href="#" class="#">Create Employee</a></li>
-                            <li><a href="{{-- {{ route('admin-dashboard.employee-profile.index') }} --}}" class="#">List of Employee</a></li>
+                            <li><a href="#" class="#">Create Sub Categories</a></li>
+                            <li><a href="{{-- {{ route('admin-dashboard.employee-profile.index') }} --}}" class="#">List of Sub Categories</a></li>
                         </ul>
                     </li>
 

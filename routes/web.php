@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\CustomerController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CartController;
@@ -20,22 +21,23 @@ Route::get('/', function () {
     return view('home');
 });
 
-
-// Route::get('/user/dashboard', function () {
-//     return view('layouts.backend.customer.dashboard');
-// })->middleware(['auth', 'role:customer'])->name('customer.dashboard');
-
 Route::get('/user/{name}/dashboard', [CustomerController::class, 'customerDashboard'])
     ->middleware(['auth', 'role:customer'])
     ->name('customer.dashboard');
 
+//Start Admin-Dashboard
 Route::get('/admin/dashboard', function () {
     return view('layouts.backend.admin-dashboard.dashboard');
-})->middleware(['auth', 'role:admin'])->name('admin.dashboard');
+})
+    ->middleware(['auth', 'role:admin'])
+    ->name('admin.dashboard');
+Route::prefix('/category')->group(function(){
+    route::get('index',[CategoryController::class,'index'])->name('category.index');
+    route::get('create',[CategoryController::class,'create'])->name('category.create');
+    route::post('store',[CategoryController::class,'store'])->name('category.store');
+});
 
-
-
-
+//End Admin-Dashboard
 Route::prefix('/')->group(function(){
     route::get('blog',[BlogController::class,'index'])->name('blog.index');
 });

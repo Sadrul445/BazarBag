@@ -38,7 +38,7 @@
     <!-- page-wrapper Start-->
     <div class="page-wrapper compact-wrapper" id="pageWrapper">
         <!-- Page Header Start-->
-            @includeIf('admin-dashboard.partials.header')
+            @includeIf('layouts.backend.admin-dashboard.partials.header')
         <div class="page-body-wrapper sidebar-icon">
 
                @includeIf('layouts.backend.admin-dashboard.partials.sidebar')
