@@ -50,18 +50,25 @@
                         </ul>
                     </li> --}}
                     <li class="dropdown">
-                        <a class="nav-link menu-title " href="javascript:void(0)"><i class="fa-solid fa-calendar-check fa-lg"></i><span class="ms-3">Categories</span></a>
+                        <a class="nav-link menu-title " href="javascript:void(0)"><i class="fa-solid fa-calendar-check fa-lg"></i><span class="ms-3">Category</span></a>
                         <ul class="nav-submenu menu-content" style="display: none;">
                             <li><a href="{{ route('category.create') }}" class="#">Create Categories</a></li>
                             <li><a href="{{ route('category.index') }}" class="#">Show Category</a></li>
-                            {{-- <li><a href="#" class="#">List of Employee</a></li> --}}
+                            {{-- <li><a href="#" class="#">List of category</a></li> --}}
                         </ul>
                     </li>
                     <li class="dropdown">
-                        <a class="nav-link menu-title " href="javascript:void(0)"><i class="fa-solid fa-clipboard-user fa-lg"></i><span class="ms-3">Sub Categories</span></a>
+                        <a class="nav-link menu-title " href="javascript:void(0)"><i class="fa-solid fa-clipboard-user fa-lg"></i><span class="ms-3">Sub Category</span></a>
                         <ul class="nav-submenu menu-content" style="display: none;">
                             <li><a href="#" class="#">Create Sub Categories</a></li>
-                            <li><a href="{{-- {{ route('admin-dashboard.employee-profile.index') }} --}}" class="#">List of Sub Categories</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a class="nav-link menu-title " href="javascript:void(0)"><i class="fa-solid fa-calendar-check fa-lg"></i><span class="ms-3">Product</span></a>
+                        <ul class="nav-submenu menu-content" style="display: none;">
+                            <li><a href="{{ route('product.create') }}" class="#">Create Product</a></li>
+                            <li><a href="{{ route('product.index') }}" class="#">Show Product</a></li>
+                            {{-- <li><a href="#" class="#">List of product</a></li> --}}
                         </ul>
                     </li>
 

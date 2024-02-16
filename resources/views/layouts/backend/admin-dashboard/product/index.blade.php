@@ -4,14 +4,14 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('backend/assets/css/datatable-extension.css') }}">
 @endpush
 @include('layouts.backend.admin-dashboard.partials.css')
-@section('title', 'List of Category')
+@section('title', 'List of Products')
 @section('content')
     @component('components.breadcrumb')
         @slot('bredcrumb_title')
             Home
         @endslot
-        <li class="breadcrumb-item">Category</li>
-        <li class="breadcrumb-item">List of Category</li>
+        <li class="breadcrumb-item">Products</li>
+        <li class="breadcrumb-item">List of Products</li>
     @endcomponent
     <div class="container">
         <div class="row">
@@ -20,7 +20,7 @@
                     <div class="card-body">
                         <div class="table-responsive">
                             <h2>
-                                Category Index
+                                Product Index
                             </h2>
                             <div>
                                 @if (session()->has('create'))
@@ -42,42 +42,44 @@
                             <table class="table text-center display" id="basic-1">
                                 <thead style="font-size:12px;text-align:center">
                                     <tr>
-                                        <th>ID</th>
                                         <th>Name</th>
+                                        <th>Slug</th>
                                         <th>Description</th>
                                         <th>Image</th>
+                                        <th>Price</th>
+                                        <th>Discount</th>
+                                        <th>Quantity</th>
+                                        <th>Stock Quantity Available</th>
+                                        <th>Category ID</th>
                                         <th>Status</th>
-                                        <th>Parent Category ID</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody style="font-size:12px;text-align:center">
-                                    @foreach ($categories as $category)
+                                    @foreach ($products as $product)
                                         <tr>
-                                            <td>{{ $category->id }}</td>
-                                            <td>{{ $category->name }}</td>
-                                            <td>{{ $category->description }}</td>
+                                            <td>{{ $product->name }}</td>
+                                            <td>{{ $product->slug }}</td>
+                                            <td>{{ $product->description }}</td>
                                             <td>
-                                                <img src="{{ asset('storage/' . $category->image) }}" alt="Category Image"
+                                                <img src="{{ asset('storage/' . $product->image) }}" alt="Product Image"
                                                     width="70">
                                             </td>
-                                            <td>{{ $category->status }} </td>
-                                            <td>
-                                                @if ($category->parent_category_id == NULL)
-                                                    {{-- <strong style="color: green">{{ $category->name }}</strong> --}}
-                                                    <strong style="color: #b60000">NULL</strong>
-                                                @else
-                                                {{ $category->parent_category_id }} </td>
-                                                @endif
+                                            <td>{{ $product->price }} </td>
+                                            <td>{{ $product->discount }} </td>
+                                            <td>None</td>
+                                            <td>{{ $product->stock_quantity_available }} </td>
+                                            <td>{{ $product->category_name }} </td>
+                                            <td>{{ $product->status }} </td>
                                             <td>
                                                 <div class="d-flex">
                                                     <div>
-                                                        <a href="{{ route('category.edit', ['id' => $category->id]) }}" class="btn btn-outline-primary">Edit</a>
+                                                        <a href="{{-- {{ route('product.edit', ['id' => $product->id]) }} --}}" class="btn btn-outline-primary">Edit</a>
                                                     </div>
                                                     <div style="margin-left:5px">
-                                                        <form action="{{ route('category.destroy', ['id' => $category->id]) }}" method="POST">
+                                                        <form action="{{-- {{ route('product.destroy', ['id' => $product->id]) }} --}}" method="POST">
                                                             @csrf
-                                                            @method('DELETE')
+                                                            {{-- @method('DELETE') --}}
                                                             <button type="submit" class="btn btn-outline-danger">Delete</button>
                                                         </form>
                                                     </div>
@@ -88,7 +90,7 @@
                                 </tbody>
                             </table>
                             {{-- <div>
-                                {{ $category->links() }}
+                                {{ $product->links() }}
                             </div> --}}
                         </div>
                     </div>

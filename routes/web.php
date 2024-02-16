@@ -2,11 +2,11 @@
 
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\CustomerController;
+use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckController;
 use App\Http\Controllers\ContactController;
-use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\StripeController;
@@ -35,14 +35,20 @@ Route::prefix('/category')->group(function(){
     route::get('index',[CategoryController::class,'index'])->name('category.index');
     route::get('create',[CategoryController::class,'create'])->name('category.create');
     route::post('store',[CategoryController::class,'store'])->name('category.store');
+    route::get('edit/{id}',[CategoryController::class,'edit'])->name('category.edit');
+    route::put('/{id}',[CategoryController::class,'update'])->name('category.update');
+    route::delete('/delete/{id}',[CategoryController::class,'destroy'])->name('category.destroy');
+
 });
 
 //End Admin-Dashboard
 Route::prefix('/')->group(function(){
     route::get('blog',[BlogController::class,'index'])->name('blog.index');
 });
-Route::prefix('/')->group(function(){
-    route::get('product',[ProductController::class,'index']);
+Route::prefix('/product')->group(function(){
+    route::get('index',[ProductController::class,'index'])->name('product.index');
+    route::get('create',[ProductController::class,'create'])->name('product.create');
+    route::post('store',[ProductController::class,'store'])->name('product.store');
 });
 Route::prefix('/')->group(function () {
     route::get('contact-us',[ContactController::class,'index'])->name('contact.index');

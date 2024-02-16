@@ -13,8 +13,8 @@
     <link rel="icon" href="../assets/images/favicon.png" type="image/x-icon">
     <link rel="shortcut icon" href="../assets/images/favicon.png" type="image/x-icon">
     <title>
-        BazarBag Admin Dashboard
-        @yield('title')
+        
+        @yield('title','Admin Dashboard')
     </title>
     <!-- Google font-->
     <link rel="preconnect" href="https://fonts.gstatic.com">

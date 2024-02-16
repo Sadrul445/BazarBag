@@ -112,7 +112,7 @@
                                                             </div>
                                                             <div class="col-sm-9">
                                                                 <a href="{{ route('shop.details', ['id' => $id]) }}">
-                                                                    <h5>{{ $details['product_name'] }}</h5>
+                                                                    <h5>{{ $details['name'] }}</h5>
                                                                     <p>Price: ৳ {{ $details['price'] }}</p>
                                                                 </a>
                                                                 <p class="count">Quantity:{{ $details['quantity'] }}

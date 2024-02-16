@@ -2,47 +2,50 @@
 @push('css')
 @endpush
 @include('layouts.backend.admin-dashboard.partials.css')
-@section('title', 'Create Category')
+@section('title', 'Edit Category')
 @section('content')
     @component('components.breadcrumb')
         @slot('bredcrumb_title')
             Home
         @endslot
         <li class="breadcrumb-item">Category</li>
-        <li class="breadcrumb-item">Create</li>
+        <li class="breadcrumb-item">Edit</li>
     @endcomponent
     <div class="container">
         <div class="row">
             <div class="col-sm-6">
                 <div class="card">
                     <div class="card-body">
-                        <form action="{{ route('category.store') }}" enctype="multipart/form-data" method="POST">
+                        <form action="{{ route('category.update', ['id' => $category->id]) }}" method="POST"
+                            enctype="multipart/form-data">
                             @csrf
+                            @method('put')
                             <div class="row mb-4">
                                 <div class="col">
                                     <x-input-label class="form-label" for="name" :value="__('Name')" />
-                                    <span class="text-danger">(*)</span>
                                     <x-text-input class="form-control" id="name" type="text"
-                                        placeholder="Enter your category name here..." required="" name="name" />
+                                        value="{{ $category->name }}" name="name" />
                                 </div>
                             </div>
                             <div class="row mb-4">
                                 <div class="col">
                                     <x-input-label class="form-label" for="description" :value="__('Description')" />
-                                    <span class="text-danger">(*)</span>
+
                                     <x-text-input class="form-control" id="description" type="text"
-                                        placeholder="Enter your description here..." required="" name="description" />
+                                        value="{{ $category->description }}" name="description" />
                                 </div>
                             </div>
                             <div class="row mb-4">
                                 <div class="col">
                                     <x-input-label class="form-label" for="image" :value="__('Image')" />
-                                    <span class="text-danger">(*)</span>
-                                    <x-text-input class="form-control" id="image" type="file" required=""
-                                        name="image" />
+                                    <x-text-input class="form-control" id="image" type="file" name="image" />
+                                    @if ($category->image)
+                                        <img class="mt-4 shadow bg-body rounded"
+                                            src="{{ asset('storage/' . $category->image) }}" alt="Cat Image" width="30%">
+                                    @endif
                                 </div>
                             </div>
-                    </div>
+                    </div>  
                 </div>
             </div>
             <div class="col-sm-6">
@@ -52,9 +55,11 @@
                             <div class="col">
                                 <x-input-label class="form-label" for="status" :value="__('Status')" />
                                 <span class="text-danger">(*)</span>
-                                <select class="form-control" id="status" name="status" required="">
-                                    <option value="active" selected>Active</option>
-                                    <option value="Inactive">Inactive</option>
+                                <select class="form-control" id="status" name="status">
+                                    <option value="active" {{ $category->status === 'active' ? 'selected' : '' }}>Active
+                                    </option>
+                                    <option value="Inactive" {{ $category->status === 'inactive' ? 'selected' : '' }}>
+                                        Inactive</option>
                                 </select>
                             </div>
                         </div>
@@ -63,8 +68,7 @@
                                 <x-input-label class="form-label" for="parent_category_id" :value="__('Parent Category ID')" />
                                 <span class="text-danger">(*)</span>
                                 <x-text-input class="form-control" id="parent_category_id" type="number"
-                                    placeholder="Enter your parent category id here..."
-                                    name="parent_category_id" />
+                                    value="{{ $category->parent_category_id }}" name="parent_category_id" />
                             </div>
                         </div>
                         <div class="row mt-4">
@@ -81,16 +85,3 @@
         </div>
     </div>
 @endsection
-@push('scripts')
-    {{-- <script>
-        //FroalaEditor
-        var editor = new FroalaEditor('#about', {
-            pluginsEnable: ['insertUnorderedList', 'fullscreen', 'bold', 'italic', 'underline', 'strikeThrough',
-                'subscript', 'superscript', 'fontFamily', 'fontSize', 'color', 'align', 'outdent', 'indent',
-                'quote', 'insertLink',
-                'insertImage', 'insertTable', 'insertHR', 'undo', 'redo'
-            ],
-            height: '100px',
-        });
-    </script> --}}
-@endpush
