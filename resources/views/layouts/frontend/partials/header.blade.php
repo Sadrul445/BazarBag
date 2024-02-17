@@ -104,18 +104,18 @@
 
                                                 {{-- @if (session('cart') && count(session('cart')) > 0) --}}
                                                 @if (session('cart') && is_array(session('cart')) && count(session('cart')) > 0)
-                                                    @foreach (session('cart') as $id => $details)
+                                                    @foreach (session('cart') as $id => $product)
                                                         <div class="row">
                                                             <div class="col-sm-3">
-                                                                <img src="{{ $details['image'] }}" alt="Product 1"
+                                                                <img src="{{ asset('storage/' .$product['image']) }}" alt="Product Image"
                                                                     class="cart-item-image">
                                                             </div>
                                                             <div class="col-sm-9">
                                                                 <a href="{{ route('shop.details', ['id' => $id]) }}">
-                                                                    <h5>{{ $details['name'] }}</h5>
-                                                                    <p>Price: ৳ {{ $details['price'] }}</p>
+                                                                    <h5>{{ $product['name'] }}</h5>
+                                                                    <p>Price: ৳ {{ $product['price'] }}</p>
                                                                 </a>
-                                                                <p class="count">Quantity:{{ $details['quantity'] }}
+                                                                <p class="count">Quantity:{{ $product['quantity'] }}
                                                                 </p>
                                                             </div>
                                                         </div>
@@ -126,9 +126,9 @@
                                                             <div class="col-sm-3">Sub Total:</div>
                                                             <div class="col-sm-4"></div>
                                                             @php $total = 0 @endphp
-                                                            @foreach ((array) session('cart') as $id => $details)
+                                                            @foreach ((array) session('cart') as $id => $product)
                                                                 @php
-                                                                    $total += $details['price'] * $details['quantity'];
+                                                                    $total += $product['price'] * $product['quantity'];
                                                                 @endphp
                                                             @endforeach
                                                             <div class="col-sm-5">৳ {{ $total }}</div>
@@ -142,8 +142,6 @@
                                         </div>
 
                                         <div class="text-center">Product item: <span>৳ {{ $total }}</span></div>
-
-
 
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary"
@@ -161,8 +159,7 @@
                     <div class="header__cart__price">item: <span>৳ {{ $total }}</span></div>
                 </div>
             </div>
-
-
+            
         </div>
         <div class="humberger__open">
             <i class="fa fa-bars"></i>

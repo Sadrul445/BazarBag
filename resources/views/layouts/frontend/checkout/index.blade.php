@@ -129,7 +129,7 @@
                                             $total += $details['price'] * $details['quantity'];
                                         @endphp
                                         <ul>
-                                            <li>{{ $details['product_name'] }} <strong>x {{ $details['quantity'] }}
+                                            <li>{{ $details['name'] }} <strong>x {{ $details['quantity'] }}
                                                 </strong>
                                                 <span> ৳ {{ $details['price'] * $details['quantity'] }}</span>
                                             </li>

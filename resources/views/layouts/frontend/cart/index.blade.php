@@ -47,28 +47,28 @@
                                     $cart = session('cart');
                                 @endphp
                                 @if (is_array($cart))
-                                    @foreach ($cart as $id => $details)
+                                    @foreach ($cart as $id => $product)
                                         @php
-                                            $total += $details['price'] * $details['quantity'];
+                                            $total += $product['price'] * $product['quantity'];
                                         @endphp
                                         <tr data-id="{{ $id }}">
                                             <td class="shoping__cart__item">
-                                                <img src="{{ $details['image'] }}" alt="">
-                                                <p>{{ $details['product_name'] }}</p>
+                                                <img src="{{ asset('storage/' . $product['image']) }}" alt="Product Image">
+                                                <p>{{ $product['name'] }}</p>
                                             </td>
                                             <td class="shoping__cart__price" data-th="price">
-                                                ৳ {{ $details['price'] }}
+                                                ৳ {{ $product['price'] }}
                                             </td>
                                             <td class="shoping__cart__quantity" data-th="quantity">
                                                 <div class="quantity">
                                                     <div class="pro-qty">
                                                         <input class="cart__update" type="number"
-                                                            value="{{ $details['quantity'] }}">
+                                                            value="{{ $product['quantity'] }}">
                                                     </div>
                                                 </div>
                                             </td>
                                             <td class="shoping__cart__total">
-                                                ৳ {{ $details['price'] * $details['quantity'] }}
+                                                ৳ {{ $product['price'] * $product['quantity'] }}
                                             </td>
                                             <td class="shoping__cart__item__close" data-th="">
                                                 <span class="icon_close"></span>

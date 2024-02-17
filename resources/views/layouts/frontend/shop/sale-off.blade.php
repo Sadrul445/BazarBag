@@ -19,11 +19,8 @@
                                             class="fa fa-shopping-cart"></i></a></li>
                             </ul>
                         </div>
-                        <div class="product__discount__item__text">
-                            
-                            {{-- @foreach ($categories as $category )
-                            <span>{{$category->name }}</span>
-                            @endforeach --}}
+                        <div class="product__discount__item__text">        
+                            {{-- <span>{{$category->name == $product->category_name }}</span> --}}
                             <h6><a
                                     href="{{ route('shop.details', ['id' => $product->id]) }}">{{ $product->name }}</a>
                             </h6>
