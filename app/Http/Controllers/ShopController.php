@@ -9,14 +9,14 @@ use Illuminate\Http\Request;
 
 class ShopController extends Controller
 {
-    // public function shop_grid_index(){
-    //     return view('layouts.frontend.shop.shop-grid');
-    // }
-
+    public function shop_grid_index(){
+        return view('layouts.frontend.shop.shop-grid');
+    }
     
     public function shop_details(Request $request,$id){
-        $single_product = Product::find($id); //showing single product show
-        return view('layouts.frontend.shop.shop-details',compact('single_product'));
+        $product = Product::findOrFail($id); //showing single product 
+        $category = Category::findOrFail($product->category_name);
+        return view('layouts.frontend.shop.shop-details',compact('product','category'));
     }
     public function shops(Request $request){
         $products = Product::all(); // showing all products

@@ -9,7 +9,7 @@
                     <div class="product__discount__item">
                         <div class="product__discount__item__pic set-bg" data-setbg="#">
                             <div class="product__discount__percent"><strong>{{ number_format($product->discount,0) }}%</strong></div>
-                            <a href="{{-- {{ route('shop.details',['id'=>$product->id]) }} --}}"><img
+                            <a href="{{ route('shop.details',['id'=>$product->id]) }}"><img
                                     src="{{ asset('storage/' . $product->image) }}"
                                     alt=""></a>
                             <ul class="product__item__pic__hover">
