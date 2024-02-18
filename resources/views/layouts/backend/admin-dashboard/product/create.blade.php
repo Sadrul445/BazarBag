@@ -26,14 +26,14 @@
                                         placeholder="Enter your product name here..." required="" name="name" />
                                 </div>
                             </div>
-                            <div class="row mb-4">
+                            {{-- <div class="row mb-4">
                                 <div class="col">
                                     <x-input-label class="form-label" for="slug" :value="__('Slug')" />
                                     <span class="text-danger">(*)</span>
                                     <x-text-input class="form-control" id="slug" type="text"
                                         placeholder="Enter your product slug here..." required="" name="slug" />
                                 </div>
-                            </div>
+                            </div> --}}
                             <div class="row mb-4">
                                 <div class="col">
                                     <x-input-label class="form-label" for="description" :value="__('Description')" />

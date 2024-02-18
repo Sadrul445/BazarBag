@@ -12,11 +12,11 @@
                 
                     <div class="col-lg-12 text-center">
                         <div class="breadcrumb__text">
-                            <h2>Product’s Package</h2>
+                            <h2>Brands’s Package</h2>
                             <div class="breadcrumb__option">
                                 <a href="{{ url('/') }}">Home</a>
                                 <a href="#">{{ $category->name}}</a>
-                                <span>Product’s Package</span>
+                                <span>Brands Package</span>
                             </div>
                         </div>
                     </div>
@@ -24,7 +24,7 @@
         </div>
     </section>
     <!-- Breadcrumb Section End -->
-{{-- @if ($product) --}}
+@if ($product)
         <!-- Product Details Section Begin -->
         <section class="product-details spad">
             <div class="container">
@@ -69,7 +69,7 @@
                                 </div>
                             </div>
                             <a href="{{ route('add_to_cart',$product->id) }}" class="primary-btn">ADD TO CARD</a>
-    
+                            <button href="#" class="bubble-btn">BUY NOW</button>
                             <a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>
                             <ul>
                                 <li><b>Availability</b> <span>{{ $product->status }}</span></li>
@@ -152,12 +152,11 @@
                     </div>
                 </div>
             </div>
-        </section>
-    
+        </section>  
         <!-- Product Details Section End -->
-{{-- @else
-    <p>product not found</p>
-@endif --}}
+@else
+    <p>Product Not Found</p>
+@endif
 
     <!-- Related Product Section Begin -->
     <section class="related-product">

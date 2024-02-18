@@ -5,6 +5,7 @@ use App\Models\Product;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class ProductController extends Controller
 {
@@ -43,7 +44,7 @@ class ProductController extends Controller
                 'image'=>$image_path,
                 'price'=> $request->price,
                 'status' => $request->status,
-                'slug'=>$request->slug,
+                'slug'=>Str::slug($request->name),
                 'discount' => $request->discount,
                 'quantity' => $request->quantity,
                 'stock_quantity_available' => $request->stock_quantity_available,

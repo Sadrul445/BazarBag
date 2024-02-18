@@ -2,7 +2,7 @@
 @push('css')
 @endpush
 @includeIf('layouts.frontend.partials.css')
-@section('title', 'Shop/Product | MINISTORE.')
+@section('title', 'Shop/Product | BazarBag')
 @section('content')
 
     <!-- Breadcrumb Section Begin -->
