@@ -17,7 +17,6 @@ return new class extends Migration
             $table->string('slug')->nullable();
             $table->unsignedBigInteger('brand_id')->unsigned()->nullable();
             $table->longText('description');
-            $table->string('image')->nullable();
             $table->integer('price');
             $table->integer('quantity')->default(1)->nullable();
             $table->integer('stock_quantity_available')->default(1);

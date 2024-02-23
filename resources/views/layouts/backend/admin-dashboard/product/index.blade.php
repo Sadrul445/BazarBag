@@ -62,8 +62,15 @@
                                             <td>{{ $product->slug }}</td>
                                             <td>{{ $product->description }}</td>
                                             <td>
-                                                <img src="{{ asset('storage/' . $product->image) }}" alt="Product Image"
-                                                    width="70">
+                                                {{-- <img src="{{ asset('storage/' . $product->image) }}" alt="Product Image"
+                                                    width="70"> --}}
+                                                    <div class="row">
+                                                        @foreach ($product->images as $image)
+                                                        <div class="col-md-3">
+                                                            <img src="{{ asset('storage/' . $image->image_path) }}" alt="Product Image" width="70">
+                                                        </div>
+                                                        @endforeach
+                                                    </div>
                                             </td>
                                             <td>{{ $product->price }} </td>
                                             <td>{{ $product->discount }} </td>

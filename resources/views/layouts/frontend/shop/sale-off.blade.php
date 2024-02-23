@@ -8,10 +8,16 @@
                 <div class="col-lg-10">
                     <div class="product__discount__item">
                         <div class="product__discount__item__pic set-bg" data-setbg="#">
-                            <div class="product__discount__percent"><strong>{{ number_format($product->discount,0) }}%</strong></div>
-                            <a href="{{ route('shop.details',['id'=>$product->id]) }}"><img
-                                    src="{{ asset('storage/' . $product->image) }}"
-                                    alt=""></a>
+                            <div class="product__discount__percent">
+                                <strong>{{ number_format($product->discount, 0) }}%</strong>
+                            </div>
+                            @if ($product->images->isNotEmpty())
+                                <a href="{{-- {{ route('shop.details',['id'=>$product->id]) }} --}}">
+                                    <!-- Display only the first image -->
+                                    <img src="{{ asset('storage/' . $product->images->first()->image_path) }}"
+                                        alt="">
+                                </a>
+                            @endif
                             <ul class="product__item__pic__hover">
                                 <li><a href="#"><i class="fa fa-heart"></i></a></li>
                                 <li><a href="#"><i class="fa fa-retweet"></i></a></li>
@@ -19,19 +25,21 @@
                                             class="fa fa-shopping-cart"></i></a></li>
                             </ul>
                         </div>
-                        <div class="product__discount__item__text">        
+                        <div class="product__discount__item__text">
                             {{-- <span>{{$category->name == $product->category_name }}</span> --}}
-                            <h6><a
-                                    href="{{ route('shop.details', ['id' => $product->id]) }}">{{ $product->name }}</a>
+                            <h6><a href="{{ route('shop.details', ['id' => $product->id]) }}">{{ $product->name }}</a>
                             </h6>
-                            <h5>&#2547; {{ $product->price }}
-                                @if ($product->discount > 0)
-                                    <p style="font-weight:bold;color: red">Discounted Price:
-                                    </p> &#2547; {{ $product->price - ($product->price * $product->discount) / 100 }}
-                                @else
-                                    <p>No Discount</p>
-                                @endif
-                            </h5>
+                            @if ($product->discount > 0)
+                                <div>
+                                    <span style="text-decoration: line-through;">&#2547; {{ $product->price }}</span>
+                                    <p style="font-weight:bold;color: #7fad39">Discounted Price:
+                                        &#2547;
+                                        <strong>{{ $product->price - ($product->price * $product->discount) / 100 }}</strong>
+                                    </p>
+                                </div>
+                            @else
+                                <div>&#2547; {{ $product->price }}</div>
+                            @endif
                         </div>
                     </div>
                 </div>

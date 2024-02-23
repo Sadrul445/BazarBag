@@ -9,44 +9,64 @@
     <section class="breadcrumb-section set-bg" data-setbg="{{ asset('assets/ui/frontend/img/breadcrumb.jpg') }}">
         <div class="container">
             <div class="row">
-                
-                    <div class="col-lg-12 text-center">
-                        <div class="breadcrumb__text">
-                            <h2>Brands’s Package</h2>
-                            <div class="breadcrumb__option">
-                                <a href="{{ url('/') }}">Home</a>
-                                <a href="#">{{ $category->name}}</a>
-                                <span>Brands Package</span>
-                            </div>
+
+                <div class="col-lg-12 text-center">
+                    <div class="breadcrumb__text">
+                        {{-- <h2>Brands’s Package</h2> --}}
+                        <div class="breadcrumb__option">
+                            <a href="{{ url('/') }}">Home</a>
+                            <a href="#">{{ $category->name }}</a>
+                            <span>{{ $product->name }}</span>
                         </div>
                     </div>
+                </div>
             </div>
         </div>
     </section>
     <!-- Breadcrumb Section End -->
-@if ($product)
+    @if ($product)
         <!-- Product Details Section Begin -->
         <section class="product-details spad">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-6 col-md-6">
                         <div class="product__details__pic">
-                            <div class="product__details__pic__item">
-                                <a href="#"><img class="product__details__pic__item--large"
-                                    src="{{ asset('storage/' . $product->image) }}"
-                                    alt=""></a>
+                            <div class=" product_details_discount__item__pic shadow">
+                                <!-- Default large image -->
+                                <div class=" product__discount__percent ">
+                                    <strong>{{ number_format($product->discount, 0) }}%</strong>
                                 </div>
+                                @if ($product->images->isNotEmpty())
+                                    <a href="{{ asset('storage/' . $product->images->first()->image_path) }}">
+                                        <img id="largeImage" class="product__details__pic__item--large"
+                                            src="{{ asset('storage/' . $product->images->first()->image_path) }}"
+                                            alt="">
+                                    </a>
+                                @endif
+                            </div>
                             <div class="product__details__pic__slider owl-carousel">
-                                <img data-imgbigurl="{{ asset('assets/ui/frontend/img/product/details/product-details-2.jpg') }}"
-                                    src="{{ asset('assets/ui/frontend/img/product/details/thumb-2.jpg') }}" alt="">
-                                <img data-imgbigurl="{{ asset('assets/ui/frontend/img/product/details/product-details-3.jpg') }}"
-                                    src="{{ asset('assets/ui/frontend/img/product/details/thumb-3.jpg') }}" alt="">
-                                <img data-imgbigurl="{{ asset('assets/ui/frontend/img/product/details/product-details-4.jpg') }}"
-                                    src="{{ asset('assets/ui/frontend/img/product/details/thumb-4.jpg') }}" alt="">
-                                <img data-imgbigurl="{{ asset('assets/ui/frontend/img/product/details/product-details-5.jpg') }}"
-                                    src="{{ asset('assets/ui/frontend/img/product/details/thumb-5.jpg') }}" alt="">
+                                <!-- Loop through each image associated with the product -->
+                                @foreach ($product->images as $image)
+                                    {{-- <div class="item"> --}}
+                                    <!-- Thumbnail images -->
+                                    <img style="padding: 2px;background-color:#ffffff;border-radius:15px"
+                                        class="thumbnail-image" src="{{ asset('storage/' . $image->image_path) }}"
+                                        alt="Product Image">
+                                    {{-- </div> --}}
+                                @endforeach
+                            </div>
+                            <div class="hero__search__delivery shadow">
+                                <div class="hero__search__delivery__icon">
+                                    <img s src="{{ asset('assets/ui/frontend/img/logo/delivery-icon.svg') }}" alt=""
+                                        srcset="" width="32px" height="32px">
+                                </div>
+                                <div class="hero__search__delivery__text">
+                                    <h5>Fast Delivery</h5>
+                                    <span>Guaranteed</span>
+                                </div>
                             </div>
                         </div>
+
                     </div>
                     <div class="col-lg-6 col-md-6">
                         <div class="product__details__text">
@@ -59,21 +79,35 @@
                                 <i class="fa fa-star-half-o"></i>
                                 <span>(18 reviews)</span>
                             </div>
-                            <div class="product__details__price">&#2547;{{ $product->price }}</div>
+                            <div class="product__details__price">
+                                @if ($product->discount > 0)
+                                    <div>
+                                        <span style="text-decoration: line-through;">&#2547; {{ $product->price }}</span>
+                                        <p style="font-weight:700;color: #7fad39;font-size:20px">Discounted Price:
+                                            &#2547;
+                                            <strong>{{ $product->price - ($product->price * $product->discount) / 100 }}</strong>
+                                        </p>
+                                    </div>
+                                @else
+                                    <div>&#2547; {{ $product->price }}</div>
+                                @endif
+                            </div>
                             <p>{{ $product->description }}</p>
                             <div class="product__details__quantity">
                                 <div class="quantity">
                                     <div class="pro-qty">
-                                        <input type="text" value="1">
+                                        <input type="number" value="1" min="1" name="quantity">
                                     </div>
                                 </div>
                             </div>
-                            <a href="{{ route('add_to_cart',$product->id) }}" class="primary-btn">ADD TO CARD</a>
-                            <button href="#" class="bubble-btn">BUY NOW</button>
+                            <a href="{{ route('add_to_cart', $product->id) }}" class="primary-btn">ADD TO CART</a>
                             <a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>
+                            <button href="#" class="b-btn">BUY NOW</button>
+
                             <ul>
                                 <li><b>Availability</b> <span>{{ $product->status }}</span></li>
-                                <li><b>Shipping</b> <span>01 day shipping. <samp>Free Delivery Inside Chittagong</samp></span></li>
+                                <li><b>Shipping</b> <span>01 day shipping. <samp>Free Delivery Inside
+                                            Chittagong</samp></span></li>
                                 <li><b>Weight</b> <span>150ML</span></li>
                                 <li><b>Share on</b>
                                     <div class="share">
@@ -107,7 +141,7 @@
                                     <div class="product__details__tab__desc">
                                         <h6>Products Infomation</h6>
                                         <p>{{ $product->description }}</p>
-                                     
+
                                     </div>
                                 </div>
                                 <div class="tab-pane" id="tabs-2" role="tabpanel">
@@ -152,11 +186,11 @@
                     </div>
                 </div>
             </div>
-        </section>  
+        </section>
         <!-- Product Details Section End -->
-@else
-    <p>Product Not Found</p>
-@endif
+    @else
+        <p>Product Not Found</p>
+    @endif
 
     <!-- Related Product Section Begin -->
     <section class="related-product">
@@ -234,3 +268,26 @@
     </section>
     <!-- Related Product Section End -->
 @endsection
+@push('scripts')
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Set default large image
+            var defaultLargeImageSrc = $('#largeImage').attr('src');
+
+            // When a thumbnail image is clicked
+            $('.thumbnail-image').click(function() {
+                // Get the source of the clicked thumbnail
+                var clickedImageSrc = $(this).attr('src');
+
+                // Set the large image source to the clicked thumbnail source
+                $('#largeImage').attr('src', clickedImageSrc);
+            });
+
+            // Restore default large image when clicked on it
+            $('#largeImage').click(function() {
+                $('#largeImage').attr('src', defaultLargeImageSrc);
+            });
+        });
+    </script>
+@endpush

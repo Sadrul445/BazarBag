@@ -41,34 +41,42 @@
                             </thead>
                             <tbody>
                                 @php
-                                    $total = 0;
-                                @endphp
-                                @php
-                                    $cart = session('cart');
-                                @endphp
-                                @if (is_array($cart))
+                                $total = 0;
+                                $cart = session('cart');
+                            @endphp
+                            
+                            @if (is_array($cart))
+                            
+                                @foreach ($cart as $id => $product)
+                                    @php
+                                        // Calculate the price based on discount if available
+                                        $price = $product['discount'] > 0 ? ($product['price'] - ($product['price'] * $product['discount']) / 100) : $product['price'];
+                            
+                                        // Update the total based on the calculated price and quantity
+                                        $total += $price * $product['quantity'];
+                                    @endphp
+                                {{-- @if (is_array($cart))
                                     @foreach ($cart as $id => $product)
                                         @php
                                             $total += $product['price'] * $product['quantity'];
-                                        @endphp
+                                        @endphp --}}
                                         <tr data-id="{{ $id }}">
                                             <td class="shoping__cart__item">
                                                 <img src="{{ asset('storage/' . $product['image']) }}" alt="Product Image">
                                                 <p>{{ $product['name'] }}</p>
                                             </td>
                                             <td class="shoping__cart__price" data-th="price">
-                                                ৳ {{ $product['price'] }}
+                                                 <h5>&#2547; {{ $price }}</h5>
                                             </td>
                                             <td class="shoping__cart__quantity" data-th="quantity">
                                                 <div class="quantity">
                                                     <div class="pro-qty">
-                                                        <input class="cart__update" type="number"
-                                                            value="{{ $product['quantity'] }}">
+                                                        <input class="cart__update" type="number" value="{{ $product['quantity'] }}">
                                                     </div>
                                                 </div>
                                             </td>
                                             <td class="shoping__cart__total">
-                                                ৳ {{ $product['price'] * $product['quantity'] }}
+                                                ৳ {{ $price * $product['quantity'] }}
                                             </td>
                                             <td class="shoping__cart__item__close" data-th="">
                                                 <span class="icon_close"></span>

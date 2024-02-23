@@ -47,8 +47,7 @@
                                 <div class="col">
                                     <x-input-label class="form-label" for="image" :value="__('Upload Image')" />
                                     <span class="text-danger">(*)</span>
-                                    <x-text-input class="form-control" id="image" type="file" required=""
-                                        name="image" />
+                                    <x-text-input class="form-control" id="images" type="file" name="images[]" multiple required />
                                 </div>
                             </div>
                             <div class="row mb-4">

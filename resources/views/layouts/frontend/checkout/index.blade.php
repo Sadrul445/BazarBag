@@ -113,67 +113,71 @@
                                     placeholder="Notes about your order, e.g. special notes for delivery.">
                             </div>
                         </div>
-                      
-                            <div class="col-lg-4 col-md-6">
-                                <div class="checkout__order">
-                                    <h4>Your Order</h4>
-                                    <div class="checkout__order__products">Products <span>Total</span></div>
-                                    @php
-                                        $total = 0;
-                                    @endphp
-                                    @php
-                                        $cart = session('cart');
-                                    @endphp
-                                    @foreach ($cart as $id => $details)
+                        <div class="col-lg-4 col-md-6">
+                            <div class="checkout__order">
+                                <h4>Your Order</h4>
+                                <div class="checkout__order__products">Products <span>Total</span></div>
+                                @php
+                                    $cart = session('cart');
+                                @endphp
+                                @php
+                                    $total = 0;
+                                @endphp
+                                @if (is_array($cart))
+
+                                    @foreach ($cart as $id => $product)
                                         @php
-                                            $total += $details['price'] * $details['quantity'];
+                                            $price = $product['discount'] > 0 ? $product['price'] - ($product['price'] * $product['discount']) / 100 : $product['price'];
+
+                                            // Calculate the total price for this product
+                                            $productTotal = $price * $product['quantity'];
+
+                                            // Update the total based on the calculated total price
+                                            $total += $productTotal;
                                         @endphp
                                         <ul>
-                                            <li>{{ $details['name'] }} <strong>x {{ $details['quantity'] }}
-                                                </strong>
-                                                <span> ৳ {{ $details['price'] * $details['quantity'] }}</span>
+                                            <li>
+                                                {{ $product['name'] }} 
+                                                <strong>x {{ $product['quantity'] }}</strong> 
+                                                <span>৳ {{ $price }}</span> <!-- Display individual price -->
+                                                <!-- Display total price for this product -->
                                             </li>
                                         </ul>
                                     @endforeach
-                                    @php
-                                        $discount = $total * 0.1;
-                                        $discountTotal = $total - $discount;
-                                        // $deliveryFee = $total + 60;
-                                    @endphp
-                                    {{-- @php
-                                    $discount_with_delivery_fee_Total = $total + 50 - $discount;
-                                @endphp --}}
-                                    <div class="checkout__order__subtotal">Subtotal <span>৳ {{ $total }}</span></div>
-                                    <div class="checkout__order__discount">Discount (10%) <span>-৳
-                                            {{ $discount }}</span></div>
-                                    <div class="checkout__order__delivery_fee">Delivery Charge <span>Free </span></div>
-                                    <div class="checkout__order__total">Total <span>৳ {{ $discountTotal }}</span></div>
-                                    <div class="checkout__input__checkbox">
-                                        <label for="acc-or">
-                                            Create an account?
-                                            <input type="checkbox" id="acc-or">
-                                            <span class="checkmark"></span>
-                                        </label>
-                                    </div>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adip elit, sed do eiusmod tempor incididunt
-                                        ut labore et dolore magna aliqua.</p>
-                                    <div class="checkout__input__checkbox">
-                                        <label for="payment">
-                                            Check Payment
-                                            <input type="checkbox" id="payment">
-                                            <span class="checkmark"></span>
-                                        </label>
-                                    </div>
-                                    <div class="checkout__input__checkbox">
-                                        <label for="paypal">
-                                            Paypal
-                                            <input type="checkbox" id="paypal">
-                                            <span class="checkmark"></span>
-                                        </label>
-                                    </div>
-                                    <button type="submit" class="site-btn" href="{{ route('stripSession') }}">PLACE ORDER</button>
+                                @endif
+
+                                <div class="checkout__order__subtotal">Subtotal <span>৳ {{ $total }}</span></div>
+                                {{-- <div class="checkout__order__discount">Discount <span>-৳
+                                        {{ $discount }}</span></div> --}}
+                                <div class="checkout__order__delivery_fee">Delivery Charge <span>Free </span></div>
+                                <div class="checkout__order__total">Total <span>৳ {{ $total }}</span></div>
+                                <div class="checkout__input__checkbox">
+                                    <label for="acc-or">
+                                        Create an account?
+                                        <input type="checkbox" id="acc-or">
+                                        <span class="checkmark"></span>
+                                    </label>
                                 </div>
+                                <p>Lorem ipsum dolor sit amet, consectetur adip elit, sed do eiusmod tempor incididunt
+                                    ut labore et dolore magna aliqua.</p>
+                                <div class="checkout__input__checkbox">
+                                    <label for="payment">
+                                        Check Payment
+                                        <input type="checkbox" id="payment">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </div>
+                                <div class="checkout__input__checkbox">
+                                    <label for="paypal">
+                                        Paypal
+                                        <input type="checkbox" id="paypal">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </div>
+                                <button type="submit" class="site-btn" href="{{ route('stripSession') }}">PLACE
+                                    ORDER</button>
                             </div>
+                        </div>
                     </div>
                 </form>
             </div>
