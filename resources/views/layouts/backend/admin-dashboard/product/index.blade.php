@@ -45,6 +45,9 @@
                                         <th>Name</th>
                                         <th>Slug</th>
                                         <th>Description</th>
+                                        <th>SKU</th>
+                                        <th>Information</th>
+                                        <th>Short Information</th>
                                         <th>Image</th>
                                         <th>Price</th>
                                         <th>Discount</th>
@@ -60,17 +63,19 @@
                                         <tr>
                                             <td>{{ $product->name }}</td>
                                             <td>{{ $product->slug }}</td>
-                                            <td>{{ $product->description }}</td>
+                                            <td>{!! $product->description !!}</td>
+                                            <td>{{ $product->sku }}</td>
+                                            <td>{!! $product->information !!}</td>
+                                            <td>{!! $product->short_information !!}</td>
                                             <td>
-                                                {{-- <img src="{{ asset('storage/' . $product->image) }}" alt="Product Image"
-                                                    width="70"> --}}
-                                                    <div class="row">
-                                                        @foreach ($product->images as $image)
+                                                <div class="row">
+                                                    @foreach ($product->images as $image)
                                                         <div class="col-md-3">
-                                                            <img src="{{ asset('storage/' . $image->image_path) }}" alt="Product Image" width="70">
+                                                            <img src="{{ asset('storage/' . $image->image_path) }}"
+                                                                alt="Product Image" width="70">
                                                         </div>
-                                                        @endforeach
-                                                    </div>
+                                                    @endforeach
+                                                </div>
                                             </td>
                                             <td>{{ $product->price }} </td>
                                             <td>{{ $product->discount }} </td>
@@ -81,17 +86,19 @@
                                             <td>
                                                 <div class="d-flex">
                                                     <div>
-                                                        <a href="{{-- {{ route('product.edit', ['id' => $product->id]) }} --}}" class="btn btn-outline-primary">Edit</a>
+                                                        <a href="{{-- {{ route('product.edit', ['id' => $product->id]) }} --}}"
+                                                            class="btn btn-outline-primary">Edit</a>
                                                     </div>
                                                     <div style="margin-left:5px">
                                                         <form action="{{-- {{ route('product.destroy', ['id' => $product->id]) }} --}}" method="POST">
                                                             @csrf
                                                             {{-- @method('DELETE') --}}
-                                                            <button type="submit" class="btn btn-outline-danger">Delete</button>
+                                                            <button type="submit"
+                                                                class="btn btn-outline-danger">Delete</button>
                                                         </form>
                                                     </div>
                                                 </div>
-                                            </td>                                              
+                                            </td>
                                         </tr>
                                     @endforeach
                                 </tbody>
@@ -107,22 +114,20 @@
     </div>
 @endsection
 @push('scripts')
+    <script>
+        //    function toggleCollapse(id) {
+        //     const contentDiv = document.getElementById(`collapseContent${id}`);
+        //     const linkTextSpan = document.getElementById(`collapseLinkText${id}`);
 
-<script>
-//    function toggleCollapse(id) {
-//     const contentDiv = document.getElementById(`collapseContent${id}`);
-//     const linkTextSpan = document.getElementById(`collapseLinkText${id}`);
-    
-//     if (contentDiv.style.maxHeight) {
-//         // Collapse the content
-//         contentDiv.style.maxHeight = null;
-//         linkTextSpan.textContent = "See More";
-//     } else {
-//         // Expand the content
-//         contentDiv.style.maxHeight = contentDiv.scrollHeight + "px";
-//         linkTextSpan.textContent = "See Less";
-//     }
-// }
-</script>
-
+        //     if (contentDiv.style.maxHeight) {
+        //         // Collapse the content
+        //         contentDiv.style.maxHeight = null;
+        //         linkTextSpan.textContent = "See More";
+        //     } else {
+        //         // Expand the content
+        //         contentDiv.style.maxHeight = contentDiv.scrollHeight + "px";
+        //         linkTextSpan.textContent = "See Less";
+        //     }
+        // }
+    </script>
 @endpush

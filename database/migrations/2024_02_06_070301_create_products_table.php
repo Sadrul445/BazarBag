@@ -17,11 +17,15 @@ return new class extends Migration
             $table->string('slug')->nullable();
             $table->unsignedBigInteger('brand_id')->unsigned()->nullable();
             $table->longText('description');
+            $table->string('sku')->unique()->nullable(); 
             $table->integer('price');
             $table->integer('quantity')->default(1)->nullable();
             $table->integer('stock_quantity_available')->default(1);
             $table->decimal('discount',8,2)->nullable()->default(0);
             $table->enum('status',['in stock','out of stock'])->default('in stock');
+            $table->string('weight')->nullable(); 
+            $table->text('short_information')->nullable(); 
+            $table->longText('information')->nullable();
             $table->timestamps();
         });
     }
