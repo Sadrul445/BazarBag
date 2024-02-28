@@ -89,16 +89,21 @@
                             </div>
                             <div class="col-sm-4">
                                 <x-input-label class="form-label" for="quantity" :value="__('Quantity')" />
-                                <x-text-input class="form-control" id="quantity" type="number" name="quantity" value="1" />
+                                <x-text-input class="form-control" id="quantity" type="number" name="quantity"
+                                    value="1" />
                             </div>
-                        </div> 
+                        </div>
                         <div class="row mb-4">
-                            <div class="col">
+                            <div class="col-sm-4">
                                 <x-input-label class="form-label" for="stock_quantity_available" :value="__('Stock QTY Available')" />
-                                <x-text-input class="form-control" id="stock_quantity_available" type="number" value="5"
-                                     name="stock_quantity_available" />
+                                <x-text-input class="form-control" id="stock_quantity_available" type="number"
+                                    value="5" name="stock_quantity_available" />
                             </div>
-                            <div class="col">
+                            <div class="col-sm-4">
+                                <x-input-label class="form-label" for="sku" :value="__('Stock Keep Unit (sku)')" />
+                                <x-text-input class="form-control" id="sku" type="text" name="sku" />
+                            </div>
+                            <div class="col-sm-4">
                                 <x-input-label class="form-label" for="status" :value="__('Status')" />
                                 <span class="text-danger">(*)</span>
                                 <select class="form-control" id="status" name="status" required="">
@@ -126,17 +131,19 @@
     </script>
     <script>
         //FroalaEditor
-        var editorIds = ['#information','#short_information','#description'];
+        var editorIds = ['#information', '#short_information', '#description'];
 
         editorIds.forEach(function(id) {
-            new FroalaEditor(id, { 
-            pluginsEnable: ['insertUnorderedList', 'fullscreen', 'bold', 'italic', 'underline', 'strikeThrough',
-                'subscript', 'superscript', 'fontFamily', 'fontSize', 'color', 'align', 'outdent', 'indent',
-                'quote', 'insertLink',
-                'insertImage', 'insertTable', 'insertHR', 'undo', 'redo'
-            ],
-            height: '100px',
-        });
+            new FroalaEditor(id, {
+                pluginsEnable: ['insertUnorderedList', 'fullscreen', 'bold', 'italic', 'underline',
+                    'strikeThrough',
+                    'subscript', 'superscript', 'fontFamily', 'fontSize', 'color', 'align', 'outdent',
+                    'indent',
+                    'quote', 'insertLink',
+                    'insertImage', 'insertTable', 'insertHR', 'undo', 'redo'
+                ],
+                height: '100px',
+            });
         });
     </script>
 @endpush

@@ -83,7 +83,7 @@
                                 @if ($product->discount > 0)
                                     <div>
                                         <span style="text-decoration: line-through;">&#2547; {{ $product->price }}</span>
-                                        <p style="font-weight:700;color: #7fad39;font-size:20px">Discounted Price:
+                                        <p>Discounted Price:
                                             &#2547;
                                             <strong>{{ $product->price - ($product->price * $product->discount) / 100 }}</strong>
                                         </p>
@@ -92,7 +92,7 @@
                                     <div>&#2547; {{ $product->price }}</div>
                                 @endif
                             </div>
-                            <p>{{ $product->description }}</p>
+                            <p>{!! $product->description !!}</p>
                             <div class="product__details__quantity">
                                 <div class="quantity">
                                     <div class="pro-qty">
@@ -106,8 +106,30 @@
 
                             <ul>
                                 <li><b>Availability</b> <span>{{ $product->status }}</span></li>
-                                <li><b>Shipping</b> <span>01 day shipping. <samp>Free Delivery Inside
-                                            Chittagong</samp></span></li>
+                                <li><b>Shipping</b> <span>
+                                        <div class="card-body shadow shipping-card" style="">
+                                                <div class="row">
+                                                    <div class="col-sm-6">
+                                                        <div class="row">
+                                                            <div class="col-sm-1"></div>
+                                                            <p><samp>🚚 চট্টগ্রামের বাইরের</samp></p>
+                                                            <div class="col-sm-11">৩-৪ দিন ডেলিভারির সময়সীমা</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <div class="row">
+                                                            <div class="col-sm-1"></div>
+                                                            <p><samp>🚚 চট্টগ্রামের ভেতরে</samp></p>
+                                                            <div class="col-sm-11"> ১-২ দিন ডেলিভারির সময়সীমা</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                        </div>
+                                    </span>
+                                </li>
+                                <li>
+
+                                </li>
                                 <li><b>Weight</b> <span>{{ $product->weight }}</span></li>
                                 <li><b>Share on</b>
                                     <div class="share">
@@ -147,8 +169,8 @@
                                 <div class="tab-pane" id="tabs-2" role="tabpanel">
                                     <div class="product__details__tab__desc">
                                         <h6>Products Short-Infomation</h6>
-                                        <p>{{$product->short_information}}</p>
-                                        
+                                        <p>{{ $product->short_information }}</p>
+
                                     </div>
                                 </div>
                                 <div class="tab-pane" id="tabs-3" role="tabpanel">

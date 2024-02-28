@@ -832,7 +832,7 @@ ol {
 }
 
 .hero__search__phone__icon {
-	font-size: 20px;
+	font-size: 25px;
 	color: #7fad39;
 	height: 50px;
 	width: 50px;
@@ -1894,9 +1894,13 @@ ol {
 	font-weight: 600;
 	margin-bottom: 15px;
 }
-
+.product__details__price p{
+	font-weight:600;
+	color: #7fad39;
+	font-size:22px;
+}
 .product__details__text p {
-	margin-bottom: 45px;
+	margin-bottom: 3px;
 }
 
 .product__details__text .primary-btn {
@@ -1958,7 +1962,10 @@ ol {
 	display: inline-block;
 	margin-right: 6px;
 }
-
+.shipping-card{
+	border-radius: 10px;
+	border:1px solid black
+}
 .pro-qty {
 	width: 140px;
 	height: 55px;
@@ -3249,17 +3256,25 @@ ol {
 		display: block;
 		font-size: 22px;
 		color: #1c1c1c;
-		height: 35px;
-		width: 35px;
+		height: 46px;
+		width: 42px;
 		line-height: 33px;
 		text-align: center;
 		border: 1px solid #1c1c1c;
 		cursor: pointer;
 		position: absolute;
 		right: 15px;
-		top: 22px;
+		top: 42px;
+		border-radius: 5px;
 	}
-
+	img{
+		width: 100%;
+	}
+	.hero__categories__all span {
+		font-size: 16px;
+		font-weight: 500;
+		color: #ffffff;
+	}
 	.header .container {
 		position: relative;
 	}
@@ -3562,15 +3577,16 @@ ol {
 		display: block;
 		font-size: 22px;
 		color: #1c1c1c;
-		height: 35px;
-		width: 35px;
+		height: 46px;
+		width: 42px;
 		line-height: 33px;
 		text-align: center;
 		border: 1px solid #1c1c1c;
 		cursor: pointer;
 		position: absolute;
 		right: 15px;
-		top: 22px;
+		top: 42px;
+		border-radius: 5px;
 	}
 
 	.header .container {
@@ -3784,6 +3800,25 @@ ol {
 /* Small Device = 320px */
 
 @media only screen and (max-width: 479px) {
+	.breadcrumb__option a {
+		display: inline-block;
+		font-size: 13px;
+		color: #ffffff;
+		font-weight: 700;
+		margin-right: 20px;
+		position: relative;
+	}
+	.breadcrumb-section {
+		display: flex;
+		align-items: center;
+		padding: 10px 0 10px;
+		border-radius: 10px;
+	}
+	.breadcrumb__option span {
+		display: inline-block;
+		font-size: 14px;
+		color: #ffffff;
+	}
 	.hero__search__form form .hero__search__categories {
 		display: none;
 	}
@@ -3791,12 +3826,25 @@ ol {
 	.featured__controls ul li {
 		margin-bottom: 10px;
 	}
-
+	.product-details {
+		padding-top: 35px;
+	}
 	.product__details__text ul li b {
 		width: 100px;
 		font-size: 15px;
 	}
-
+	.product__details__text h3{
+		padding-top: 10px;
+		font-size: 20px;
+	}
+	.shipping-card{
+		border-radius: 10px;
+		border:1px solid black;
+		font-size: 12px;
+	}
+	.hero {
+		padding-bottom: 0px;
+	}
 	.b-btn {
 		font-weight: 600;
 		width: 100% !important;
@@ -3820,7 +3868,10 @@ ol {
 		color: #000000;
 		transform: translateY(-7px);
 	}
-
+	.product {
+		padding-top: 35px;
+		padding-bottom: 40px;
+	}
 	.product__details__tab .nav-tabs li {
 		margin-right: 20px;
 	}
@@ -3840,6 +3891,17 @@ ol {
 		background: #ffe8e8;
 		border-radius: 45px;
 		margin-left: 5px;
+	}
+	.product__details__text .product__details__price {
+		font-size: 24px;
+		color: #666666;
+		font-weight: 600;
+		margin-bottom: 15px;
+	}
+	.product__details__price p{
+		font-weight:600;
+		color: #7fad39;
+		font-size:18px;
 	}
 	.product__details__quantity {
 		display: inline-block;
@@ -3915,6 +3977,19 @@ ol {
 	.blog__details__hero__text h2 {
 		font-size: 18px;
 	}
+	.hero__search__phone__icon {
+		font-size: 14px;
+		color: #7fad39;
+		height: 37px;
+		width: 35px;
+		background: #f5f5f5;
+		line-height: 50px;
+		text-align: center;
+		border-radius: 50%;
+		float: left;
+		margin-right: 10px;
+		margin-top: 3px;
+	}
 	.hero__search__delivery{
 		margin-top: 20px;
 		float: left;
@@ -3946,9 +4021,53 @@ ol {
 		margin-bottom: 5px;
 		font-size: 12px;
 	}
-	
+	.hero__categories {
+		margin-bottom: 20px;
+		border-radius: 10px;
+	}
+	.hero__categories__all {
+		background: #7fad39;
+		position: relative;
+		padding: 4px 12px 10px 10px;
+		cursor: pointer;
+	}
+	.hero__categories__all span {
+		font-size: 16px;
+		font-weight: 500;
+		color: #ffffff;
+	}
 	.hero__search__delivery__text span {
 		font-size: 10px;
 		color: #7fad39;
+	}
+	.hero__categories ul li a {
+		font-size: 13px;
+		color: #1c1c1c;
+		line-height: 34px;
+		display: block;
+	}
+	.hero__search__phone__text h5 {
+		color: #1c1c1c;
+		font-weight: 700;
+		margin-bottom: 5px;
+		font-size: 15px;
+	}
+	.hero__search{
+		margin-bottom: 5px;
+	}
+	.humberger__open {
+		display: block;
+		font-size: 22px;
+		color: #1c1c1c;
+		height: 46px;
+		width: 42px;
+		line-height: 33px;
+		text-align: center;
+		border: 1px solid #1c1c1c;
+		cursor: pointer;
+		position: absolute;
+		right: 15px;
+		top: 42px;
+		border-radius: 5px;
 	}
 }

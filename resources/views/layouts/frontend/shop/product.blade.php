@@ -4,7 +4,7 @@
             <div class="product__item">
                 <div class="product__item__pic set-bg">
                     @if ($product->images->isNotEmpty())
-                        <a href="{{-- {{ route('shop.details',['id'=>$product->id]) }} --}}"><img
+                        <a href="{{ route('shop.details',['id'=>$product->id]) }}"><img
                                 src="{{ asset('storage/' . $product->images->first()->image_path) }}" alt=""></a>
                     @endif
                     <ul class="product__item__pic__hover">

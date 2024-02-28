@@ -12,8 +12,16 @@ class ProductController extends Controller
 {
     public function index(Request $request)
     {
-        $products = Product::all();
+        $products = Product::orderBy('id','desc')->get();
         return view('layouts.backend.admin-dashboard.product.index', compact('products'));
+    }
+    public function viewSingleProduct(Request $request,$id,$name){
+        $product = Product::findOrFail($id);
+        if ($product->name != $name) {
+            // Handle the case where the provided name in the URL doesn't match the actual product name
+            abort(404);
+        }
+        return view('layouts.backend.admin-dashboard.product.view',compact('product'));
     }
     public function create(Request $request)
     {
@@ -48,6 +56,7 @@ class ProductController extends Controller
         $product->quantity = $request->quantity;
         $product->stock_quantity_available = $request->stock_quantity_available;
         $product->category_name = $request->category_name;
+        $product->sku = $request->sku;
         $product->save();
 
         // Handle multiple image uploads
@@ -59,5 +68,11 @@ class ProductController extends Controller
         }
 
         return redirect()->route('product.index')->with('success', 'Product created successfully.');
+    }
+      public function destroy(Request $request,$id){
+        $product = Product::findOrFail($id);
+        $product->delete();
+        session()->flash('delete', 'Product Deleted Successfully');
+        return redirect()->route('product.index'); 
     }
 }

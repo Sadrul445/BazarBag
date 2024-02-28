@@ -46,9 +46,12 @@ Route::prefix('/')->group(function(){
     route::get('blog',[BlogController::class,'index'])->name('blog.index');
 });
 Route::prefix('/product')->group(function(){
+    Route::get('/{id}/{name}', [ProductController::class, 'viewSingleProduct'])->name('product.view');
     route::get('index',[ProductController::class,'index'])->name('product.index');
     route::get('create',[ProductController::class,'create'])->name('product.create');
     route::post('store',[ProductController::class,'store'])->name('product.store');
+    Route::delete('/delete/{id}', [ProductController::class, 'destroy'])->name('product.destroy');
+
 });
 Route::prefix('/')->group(function () {
     route::get('contact-us',[ContactController::class,'index'])->name('contact.index');
