@@ -69,7 +69,17 @@ class ProductController extends Controller
 
         return redirect()->route('product.index')->with('success', 'Product created successfully.');
     }
-      public function destroy(Request $request,$id){
+    public function edit(Request $request,$id,$name)
+    {
+        $product = Product::findOrFail($id);
+        $categories = Category::all();
+        if ($product->name != $name) {
+            // Handle the case where the provided name in the URL doesn't match the actual product name
+            abort(404);
+        }
+        return view('layouts.backend.admin-dashboard.product.edit', compact('product','categories'));
+    }
+    public function destroy(Request $request,$id){
         $product = Product::findOrFail($id);
         $product->delete();
         session()->flash('delete', 'Product Deleted Successfully');

@@ -88,6 +88,7 @@
                                                     <div>
                                                         <a href="{{ route('product.view', ['id' => $product->id, 'name' => $product->name]) }}"
                                                             class="btn btn-outline-primary">View</a>
+                                                        <a href="{{ route('product.edit',['id'=>$product->id, 'name' => $product->name]) }}" class="btn btn-primary">Edit</a>
                                                     </div>
                                                     <div style="margin-left:5px">
                                                         <form action="{{ route('product.destroy', ['id' => $product->id]) }}" method="POST">

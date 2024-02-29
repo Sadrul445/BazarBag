@@ -10,73 +10,60 @@
         <li class="breadcrumb-item"><a href="{{ route('product.index') }}">Product</a></li>
         <li class="breadcrumb-item">{{ $product->name }}</li>
     @endcomponent
-
-    {{-- <div class="container">
-        <div class="row">
-            <div class="col-md-6">
-                <div class="card">
-                    <div class="card-body">
-                        <h2>{{ $product->name }}</h2>
-                        <p><strong>Category:</strong> {{ $product->category_name }}</p>
-                        <p><strong>Price:</strong> ${{ $product->price }}</p>
-                        <p><strong>sku:</strong> {{ $product->sku }}</p>
-                        <p><strong>Discount:</strong> {{ $product->discount }}</p>
-                        <p><strong>Quantity:</strong> {{ $product->quantity }}</p>
-                        <p><strong>Weight:</strong> {{ $product->weight }}</p>
-                        <p><strong>Short Information:</strong> {!! $product->short_information !!}</p>
-                        <p><strong>Description:</strong> {!! $product->description !!}</p>
-                        <p><strong>Information:</strong> {!! $product->information !!}</p>
-                        <p><strong>Stock Quantity Available:</strong> {{ $product->stock_quantity_available }}</p>
-                        <p><strong>Status:</strong> {{ $product->status }}</p>
-                        <!-- Add more details as needed -->
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="card">
-                    <div class="card-body">
-                        <!-- You can include an image gallery here -->
-                        @if ($product->images->count() > 0)
-                            <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-                                <div class="carousel-inner">
-                                    @foreach ($product->images as $image)
-                                                        <div class="col-md-3">
-                                                            <img src="{{ asset('storage/' . $image->image_path) }}"
-                                                                alt="Product Image" width="70">
-                                                        </div>
-                                                    @endforeach
-                                </div>
-                            </div>
-                        @else
-                        @endif
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> --}}
     <div class="container">
-        <div class="card" style="border-radius: 25px">
+        <div class="card shadow" style="border-radius: 10px">
+            <div class="d-flex justify-content-end p-2">
+                <a href="{{ route('product.edit', ['id' => $product->id, 'name' => $product->name]) }}" class="btn btn-primary shadow">Edit</a>
+            </div>
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-6">
-                        <h4>{{ $product->name }}</h4>
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <span><strong>Price:</strong> {{ $product->price }} taka</span>
-                                <span><strong>Weight: </strong>{{ $product->weight }}</span>
+                        <h4 class="fw-bold">{{ $product->name }}</h4><span
+                            class="badge bg-success">{{ $product->status }}</span>
+                        </span>
+                        <div class="my-2 border border-2 rounded-3 p-3">
+                            <div class="row mt-2">
+                                <div class="col-sm-8 mb-2">
+                                    <span class="bg-warning text-dark bg-gradient rounded-2 p-2"><strong>Stock Quantity
+                                            Availability:</strong> {{ $product->stock_quantity_available }}</span>
+                                </div>
+                                <div class="col-sm-4 text-end">
+                                    <span><strong>SKU:</strong> {{ $product->sku }}</span>
+                                </div>
                             </div>
-                            <div class="col-sm-6">col-2</div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-6">col-3</div>
-                            <div class="col-sm-6">col-4</div>
+                            <div class="row mt-3">
+                                <div class="col-sm-10 mb-4">
+                                    <span class="bg-primary bg-gradient p-2 rounded-2"><strong>Price:</strong>
+                                        {{ $product->price }} &#2547;</span>
+                                    <span class="bg-danger bg-gradient rounded-2 p-2 ">
+                                        Discount:{{ $product->discount }}%
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="row bg-gradient rounded-2 py-3 mx-1" style="background-color:#caddad;color:black">
+                                <div class="col-sm-4">
+                                    <span><strong>Weight: </strong>{{ $product->weight }}</span>
+                                </div>
+                                <div class="col-sm-4">
+                                    <span><strong>Quantity:</strong> {{ $product->quantity }}</span>
+                                </div>
+                                <div class="col-sm-4">
+                                    <span><strong>Brand:</strong> {{ $product->brand_id }}</span>
+                                </div>
+                            </div>
+                            <div class="row mt-5">
+                                <h5 class="fw-bold mb-2">Images</h5>
+                                @foreach ($product->images as $image)
+                                    <div class="col-md-2">
+                                        <img src="{{ asset('storage/' . $image->image_path) }}" alt="Product Image"
+                                            class="img-fluid mb-2 rounded shadow" style="width:100%;">
+                                    </div>
+                                @endforeach
+                            </div>
                         </div>
                     </div>
-                    <div class="col-md-6">
-                        {{-- <div class="card" style="border-radius: 25px">
-                    <div class="card-body"> --}}
-                        {{-- <h2>Product Name 2</h2> --}}
-                        <div class="row">
+                    <div class="col-md-6 mt-5">
+                        <div class="row mt-4">
                             <div class="col-sm-6">
                                 <x-input-label class="form-label fw-bold fs-6" for="short_information" :value="__('Short Information')" />
                                 <p>{!! $product->short_information !!}</p>
@@ -87,16 +74,14 @@
                             </div>
                         </div>
                         <div class="row">
-                            
                             <div class="col-sm-12">
                                 <div class="col">
-                                    <x-input-label class="form-label fw-bold fs-6" for="description" :value="__('Description')"/>
-                                    <p>{!! $product->description !!}</p>
+                                    <x-input-label class="form-label fw-bold fs-6" for="description" :value="__('Description')" />
+                                    <p class="d-inline-block text-truncate" style="max-width: 50px;">{!! $product->description !!}
+                                    </p>
                                 </div>
                             </div>
                         </div>
-                        {{-- </div>
-                </div> --}}
                     </div>
                 </div>
             </div>

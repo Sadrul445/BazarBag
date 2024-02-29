@@ -50,6 +50,8 @@ Route::prefix('/product')->group(function(){
     route::get('index',[ProductController::class,'index'])->name('product.index');
     route::get('create',[ProductController::class,'create'])->name('product.create');
     route::post('store',[ProductController::class,'store'])->name('product.store');
+    route::get('/edit/{id}/{name}',[ProductController::class,'edit'])->name('product.edit');
+    // route::put('update/{id}',[ProductController::class,'update'])->name('product.update');
     Route::delete('/delete/{id}', [ProductController::class, 'destroy'])->name('product.destroy');
 
 });
