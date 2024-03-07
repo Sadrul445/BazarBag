@@ -16,7 +16,7 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-12">
-                <div class="card">
+                <div class="card rounded shadow">
                     <div class="card-body">
                         <div class="table-responsive">
                             <h2>
@@ -39,11 +39,12 @@
                                     </div>
                                 @endif
                             </div>
-                            <table class="table text-center display" id="basic-1">
+                            <table class="table text-center display dataTable" id="basic-1">
                                 <thead style="font-size:12px;text-align:center">
                                     <tr>
                                         <th>ID</th>
                                         <th>Name</th>
+                                        {{-- <th>Slug</th> --}}
                                         <th>Description</th>
                                         <th>Image</th>
                                         <th>Status</th>
@@ -56,6 +57,7 @@
                                         <tr>
                                             <td>{{ $category->id }}</td>
                                             <td>{{ $category->name }}</td>
+                                            {{-- <td>{{ $category->slug }}</td> --}}
                                             <td>{{ $category->description }}</td>
                                             <td>
                                                 <img src="{{ asset('storage/' . $category->image) }}" alt="Category Image"
@@ -67,7 +69,7 @@
                                                     {{-- <strong style="color: green">{{ $category->name }}</strong> --}}
                                                     <strong style="color: #b60000">NULL</strong>
                                                 @else
-                                                {{ $category->parent_category_id }} </td>
+                                                <strong style="color: green">{{ $category->parent_category_id }}</strong>
                                                 @endif
                                             <td>
                                                 <div class="d-flex">
@@ -98,7 +100,8 @@
     </div>
 @endsection
 @push('scripts')
-
+<script src="{{ asset('backend/assets/js/datatable/datatables/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('backend/assets/js/datatable/datatables/datatable.custom.js') }}"></script>
 <script>
 //    function toggleCollapse(id) {
 //     const contentDiv = document.getElementById(`collapseContent${id}`);

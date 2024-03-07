@@ -60,8 +60,8 @@
                         <script>
                             document.write(new Date().getFullYear());
                         </script> All rights reserved | made with <i class="fa fa-heart"
-                            aria-hidden="true"></i> by <a href="https://stcreation.tech/"
-                            target="_blank">stcreation.tech</a>
+                            aria-hidden="true"></i> by <a href="https://sadrul445.github.io/sadrul-s-portfolio/index.html"
+                            target="_blank">Sadrul Tanim</a>
                     </p>
                 </div>
                 {{-- <div class="footer__copyright__payment"><img src="img/payment-item.png" alt=""></div> --}}

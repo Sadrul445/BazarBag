@@ -6,6 +6,7 @@
 <script src="{{ asset('backend/assets/js/sidebar-menu.js') }}"></script>
 <script src="{{ asset('backend/assets/js/config.js') }}"></script>
 <!-- Bootstrap js-->
+
 <script src="{{ asset('backend/assets/js/bootstrap/popper.min.js') }}"></script>
 <script src="{{ asset('backend/assets/js/bootstrap/bootstrap.min.js') }}"></script>
 <!-- Theme js-->

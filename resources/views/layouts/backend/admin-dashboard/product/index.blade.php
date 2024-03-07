@@ -84,19 +84,20 @@
                                             <td>{{ $product->category_name }} </td>
                                             <td class="{{ $product->status == 'in stock' ? 'text-success fw-bold' : 'text-danger fw-bold' }}">{{ $product->status }} </td>
                                             <td>
-                                                <div class="d-flex">
-                                                    <div>
+                                                <div class="d-flex mt-3">
+                                                    <div>                   
                                                         <a href="{{ route('product.view', ['id' => $product->id, 'name' => $product->name]) }}"
-                                                            class="btn btn-outline-primary">View</a>
-                                                        <a href="{{ route('product.edit',['id'=>$product->id, 'name' => $product->name]) }}" class="btn btn-primary">Edit</a>
+                                                            ><i class="fa-solid fa-xl fa-eye view"></i></a>
                                                     </div>
-                                                    <div style="margin-left:5px">
+                                                    <div style="margin-left:10px">
+                                                        <a href="{{ route('product.edit',['id'=>$product->id, 'name' => $product->name]) }}"><i class="fa-solid fa-xl fa-pen-to-square edit"></i></a>
+                                                    </div>
+                                                    <div style="margin-left:10px">
                                                         <form action="{{ route('product.destroy', ['id' => $product->id]) }}" method="POST">
                                                             @csrf
                                                             @method('DELETE')
-                                                            <button type="submit"
-                                                                class="btn btn-outline-danger">Delete</button>
-                                                        {{-- </form> --}}
+                                                            <button type="submit" class="btn-delete" onclick="return confirm('Are you sure you want to delete this item?')"><i class="fa-solid fa-xl fa-trash trash"></i></button>
+                                                        </form>
                                                     </div>
                                                 </div>
                                             </td>

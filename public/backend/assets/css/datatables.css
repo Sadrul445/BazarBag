@@ -83,7 +83,7 @@ table.dataTable thead .sorting_desc_disabled {
     bottom: 8px;
     right: 8px;
     display: block;
-    font-family: 'Glyphicons Halflings';
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     opacity: 0.5; }
 
 table.dataTable thead .sorting:after {
@@ -964,7 +964,8 @@ table.dataTable.table {
         top: 12px;
         right: 8px;
         display: block;
-        font-family: Icons; }
+        font-family:sans-serif; 
+      }
     table.dataTable.table thead th.sorting:after,
     table.dataTable.table thead td.sorting:after {
       content: "\f0dc";

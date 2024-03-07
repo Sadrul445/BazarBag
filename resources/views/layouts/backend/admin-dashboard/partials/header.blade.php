@@ -15,14 +15,17 @@
         </div>
         <div class="left-menu-header col">
             <ul>
+                <li class="mx-4">
+                    <a class="btn shadow" href="{{ url('/') }}" style="background-color:#7fad39;color: #ffffff" type="button">Home</a>
+                </li>
                 <li>
                     <form class="form-inline search-form">
-                        <div class="search-bg"><i class="fa fa-search" {{-- style="color: #0DB14B" --}}></i>
+                        <div class="search-bg"><i class="fa fa-search" style="color: #7fad39"></i>
                             <input class="form-control-plaintext" placeholder="Search here.....">
                         </div>
                     </form>
                     <span class="d-sm-none mobile-search search-bg"><i class="fa fa-search"></i></span>
-                </li>
+                </li>         
             </ul>
         </div>
         <div class="nav-right col pull-right right-menu p-0">

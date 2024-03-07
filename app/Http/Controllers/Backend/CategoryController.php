@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-
+use Illuminate\Support\Str;
 class CategoryController extends Controller
 {
     public function index(Request $request){
@@ -34,6 +34,7 @@ class CategoryController extends Controller
             $category = Category::create(
                 [
                     'name' => $request->name,
+                    'slug' => Str::slug($request->name),
                     'description' => $request->description,
                     'image'=>$image_path,
                     'status' => $request->status,

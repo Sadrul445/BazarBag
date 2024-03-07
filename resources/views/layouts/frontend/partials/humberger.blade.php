@@ -87,7 +87,6 @@
             <div>English</div>
             <span class="arrow_carrot-down"></span>
             <ul>
-                <li><a href="#">Spanis</a></li>
                 <li><a href="#">English</a></li>
                 <li><a href="#">Bangla</a></li>
             </ul>
@@ -132,7 +131,7 @@
     <div class="humberger__menu__contact">
         <ul>
             <li><i class="fa fa-envelope"></i> info.bazarbag@gmail.com</li>
-            <li>Free Shipping for all Order of $999</li>
+            <li>Free Shipping for all Order of ৳999</li>
         </ul>
     </div>
 </div>

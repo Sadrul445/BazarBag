@@ -146,8 +146,8 @@
                         <div class="product__details__tab">
                             <ul class="nav nav-tabs" role="tablist">
                                 <li class="nav-item">
-                                    <a class="nav-link active" data-toggle="tab" href="tabs-1" role="tab"
-                                        aria-selected="true">Information</a>
+                                    <a class="nav-link active" data-toggle="tab" href="#tabs-1" role="tab"
+                                        aria-selected="true">Products Information</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" data-toggle="tab" href="#tabs-2" role="tab"
@@ -170,10 +170,9 @@
                                     <div class="product__details__tab__desc">
                                         <h6>Products Short-Infomation</h6>
                                         <p>{{ $product->short_information }}</p>
-
                                     </div>
                                 </div>
-                                <div class="tab-pane" id="tabs-3" role="tabpanel">
+                                {{-- <div class="tab-pane" id="tabs-3" role="tabpanel">
                                     <div class="product__details__tab__desc">
                                         <h6>Products Infomation</h6>
                                         <p>Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui.
@@ -188,7 +187,7 @@
                                             Donec velit neque, auctor sit amet aliquam vel, ullamcorper sit amet ligula.
                                             Proin eget tortor risus.</p>
                                     </div>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                     </div>

@@ -59,7 +59,7 @@
                                     <select class="form-select" id="category_name" name="category_name" required="">
                                         <option value="">Select a category</option>
                                         @foreach ($categories as $category)
-                                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                            <option value="{{ $category->id }}" {{ $product->category_name == $category->id ? 'selected' : '' }}>{{ $category->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -192,6 +192,26 @@
             // Handle removal of images
             $('#imageContainer').on('click', '.remove-image', function() {
                 $(this).parent().remove();
+            });
+        });
+    </script>
+    
+    <script type='text/javascript' src='https://cdn.jsdelivr.net/npm/froala-editor@latest/js/froala_editor.pkgd.min.js'>
+    </script>
+    <script>
+        //FroalaEditor
+        var editorIds = ['#information', '#short_information', '#description'];
+
+        editorIds.forEach(function(id) {
+            new FroalaEditor(id, {
+                pluginsEnable: ['insertUnorderedList', 'fullscreen', 'bold', 'italic', 'underline',
+                    'strikeThrough',
+                    'subscript', 'superscript', 'fontFamily', 'fontSize', 'color', 'align', 'outdent',
+                    'indent',
+                    'quote', 'insertLink',
+                    'insertImage', 'insertTable', 'insertHR', 'undo', 'redo'
+                ],
+                height: '100px',
             });
         });
     </script>

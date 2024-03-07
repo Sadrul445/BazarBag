@@ -99,7 +99,7 @@
 90. Base_inputs
 91. Project list
 92. File Manager
-
+93. Custom CSS for Bazarbag
  */
 /**=====================
      01. General CSS Start
@@ -38372,6 +38372,47 @@ body.dark-sidebar .main-navbar ul.nav-pills .nav-item .nav-link {
   justify-content: center;
 }
 
+/* 93. Custome CSS for Bazarbag */
+.edit_icon:hover {
+  opacity: 0.7;
+  cursor: pointer;
+  color: #007bff;
+}
+
+.view_icon{
+  background-color:#007bff;
+}
+.view_icon:hover {
+  opacity: 0.7;
+  cursor: pointer;
+  color: #007bff;
+}
+
+.trash{
+  color:red;
+}
+.trash:hover{
+  opacity: 0.7;
+  cursor: pointer;
+}
+.view{
+  color:#7fad39;
+}
+.view:hover{
+  opacity: 0.7;
+  cursor: pointer;
+  color: #caddad;
+
+}.btn-delete {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.btn-delete:focus {
+  outline: none;
+}
 @media screen and (max-width: 1440px) {
   .file-content .folder .folder-box .media {
     display: block;

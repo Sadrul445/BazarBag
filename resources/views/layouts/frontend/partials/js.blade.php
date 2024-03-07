@@ -5,7 +5,7 @@
 
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script src="{{ asset('assets/ui/frontend/js/owl.carousel.min.js') }}"></script>
-{{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>  --}}
+{{-- <script src="{{ asset('assets/ui/frontend/js/jquery-3.3.1.min.js') }}"></script> --}}
 <script src="{{ asset('assets/ui/frontend/js/jquery-ui.min.js') }}"></script>
 <script src="{{ asset('assets/ui/frontend/js/jquery.nice-select.min.js') }}"></script>
 <script src="{{ asset('assets/ui/frontend/js/jquery.slicknav.js') }}"></script>
