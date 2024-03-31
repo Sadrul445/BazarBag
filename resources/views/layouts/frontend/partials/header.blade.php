@@ -5,8 +5,8 @@
                 <div class="col-lg-6 col-md-6">
                     <div class="header__top__left">
                         <ul>
-                            <li><i class="fa fa-envelope"></i>info.bazarbag@gmail.com</li>
-                            <li>Free Shipping for all Order of $99</li>
+                            <li><i class="fa fa-envelope"></i>mail@bazarbag.shop</li>
+                            <li>Free Shipping for all Order of $999</li>
                         </ul>
                     </div>
                 </div>
@@ -26,16 +26,19 @@
                                 <li><a href="#">English</a></li>
                                 <li><a href="#">Bangla</a></li>
                             </ul>
-                        </div>                 
+                        </div>
                         <div class="header__top__right__auth">
 
                             @if (Route::has('login'))
                                 @auth
-                                    <a class="username" href="#"> <strong> {{ auth()->user()->name }}</strong><span class="arrow_carrot-down"></span></a> 
+                                    <a class="username" href="#"> <strong> {{ auth()->user()->name }}</strong><span
+                                            class="arrow_carrot-down"></span></a>
                                     <ul class="rounded">
-                                     
+
                                         @if (auth()->user()->role === 'customer')
-                                            <li><a href="{{ route('customer.dashboard',['name' => auth()->user()->name]) }}">Profile</a></li>
+                                            <li><a
+                                                    href="{{ route('customer.dashboard', ['name' => auth()->user()->name]) }}">Profile</a>
+                                            </li>
                                             {{-- <li><a href="{{ route('logout') }}">Logout</a></li> --}}
                                         @else
                                             <li><a href="{{ route('admin.dashboard') }}">Profile</a></li>
@@ -65,16 +68,30 @@
                     <ul>
                         <li class="active"><a href="{{ url('/') }}">Home</a></li>
                         <li><a href="{{ route('shop.index') }}">Shop</a></li>
-                        <li><a href="#">Pages</a>
+                        @foreach ($categories as $category)
+                            @if ($category->parent_category_id === null)
+                                <li>
+                                    <ul>
+                                        <li>
+                                            <a href="#">{{ $category->name }}</a>
+                                            @if ($category->children->count() > 0)
+                                                <!-- Recursive call to display children -->
+                                                @include('layouts.frontend.partials.category_child', [
+                                                    'children' => $category->children,
+                                                ])
+                                            @endif
+                                        </li>
+                                    </ul>
+                                </li>
+                            @endif
+                        @endforeach
+                        <li><a href="#" class="rounded shadow p-1"
+                                style="background-color:#7fad39;color:white">BazarBag</a>
                             <ul class="header__menu__dropdown">
-                                <li><a href="#">Shop Details</a></li>
-                                <li><a href="{{-- {{ route('cart.index') }} --}}">Shoping Cart</a></li>
-                                <li><a href="{{ route('checkout.index') }}">Check Out</a></li>
-                                <li><a href="./blog-details.html">Blog Details</a></li>
+                                <li><a href="{{ route('blog.index') }}">Blog</a></li>
+                                <li><a href="{{ url('/contact-us') }}">Contact</a></li>
                             </ul>
                         </li>
-                        <li><a href="{{ route('blog.index') }}">Blog</a></li>
-                        <li><a href="{{ url('/contact-us') }}">Contact</a></li>
                     </ul>
                 </nav>
             </div>
@@ -107,8 +124,8 @@
                                                     @foreach (session('cart') as $id => $product)
                                                         <div class="row">
                                                             <div class="col-sm-3">
-                                                                <img src="{{ asset('storage/' .$product['image']) }}" alt="Product Image"
-                                                                    class="cart-item-image">
+                                                                <img src="{{ asset('storage/' . $product['image']) }}"
+                                                                    alt="Product Image" class="cart-item-image">
                                                             </div>
                                                             <div class="col-sm-9">
                                                                 <a href="{{ route('shop.details', ['id' => $id]) }}">
@@ -159,7 +176,7 @@
                     <div class="header__cart__price">item: <span>৳ {{ $total }}</span></div>
                 </div>
             </div>
-            
+
         </div>
         <div class="humberger__open">
             <i class="fa fa-bars"></i>

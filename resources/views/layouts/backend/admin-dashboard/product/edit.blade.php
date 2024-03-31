@@ -54,9 +54,9 @@
                                         value="{{ $product->name }}" />
                                 </div>
                                 <div class="col-sm-6">
-                                    <x-input-label class="form-label" for="category_name" :value="__('Category')" />
+                                    <x-input-label class="form-label" for="category_id" :value="__('Category')" />
                                     <span class="text-danger">(*)</span>
-                                    <select class="form-select" id="category_name" name="category_name" required="">
+                                    <select class="form-select" id="category_id" name="category_id" required="">
                                         <option value="">Select a category</option>
                                         @foreach ($categories as $category)
                                             <option value="{{ $category->id }}" {{ $product->category_name == $category->id ? 'selected' : '' }}>{{ $category->name }}</option>

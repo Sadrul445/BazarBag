@@ -81,7 +81,7 @@
                                             <td style="background-color: #ddadad">{{ $product->discount }} </td>
                                             {{-- <td>None</td> --}}
                                             <td>{{ $product->stock_quantity_available }} </td>
-                                            <td>{{ $product->category_name }} </td>
+                                            <td>{{ $product->category_id}} </td>
                                             <td class="{{ $product->status == 'in stock' ? 'text-success fw-bold' : 'text-danger fw-bold' }}">{{ $product->status }} </td>
                                             <td>
                                                 <div class="d-flex mt-3">

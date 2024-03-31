@@ -49,6 +49,11 @@
 
     <!-- Categories Section End -->
 
+    <!-- Banner Begin -->
+
+    @includeIf('layouts.frontend.partials.banner')
+
+    <!-- Banner End -->
 
     <!-- Featured Section Begin -->
 
@@ -57,11 +62,6 @@
     <!-- Featured Section End -->
 
 
-    <!-- Banner Begin -->
-
-    @includeIf('layouts.frontend.partials.banner')
-
-    <!-- Banner End -->
 
 
     <!-- Latest Product Section Begin -->
@@ -90,5 +90,4 @@
     @includeIf('layouts.frontend.partials.js')
     
 </body>
-
 </html>

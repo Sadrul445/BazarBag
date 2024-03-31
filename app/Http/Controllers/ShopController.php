@@ -15,7 +15,7 @@ class ShopController extends Controller
     
     public function shop_details(Request $request,$id){
         $product = Product::findOrFail($id); //showing single product 
-        $category = Category::findOrFail($product->category_name);
+        $category = Category::findOrFail($product->category_id);
         return view('layouts.frontend.shop.shop-details',compact('product','category'));
     }
     public function shops(Request $request){

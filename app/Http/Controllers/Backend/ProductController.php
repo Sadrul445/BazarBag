@@ -55,7 +55,7 @@ class ProductController extends Controller
         $product->discount = $request->discount;
         $product->quantity = $request->quantity;
         $product->stock_quantity_available = $request->stock_quantity_available;
-        $product->category_name = $request->category_name;
+        $product->category_id = $request->category_id;
         $product->sku = $request->sku;
         $product->save();
 
